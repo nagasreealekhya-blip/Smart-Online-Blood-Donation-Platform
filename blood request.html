@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood request · lifeflow</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="../css/blood request style.css">
+</head>
+<body>
+<div class="card">
+    <div class="form-header">
+        <h2>
+            <i class="fas fa-droplet"></i> Blood request form
+        </h2>
+        <div class="sub">Fill the details to request blood units</div>
+    </div>
+    <div class="form-body">
+     <div class="field">
+            <div class="field-label">
+                <span class="label-left">
+                    <span class="required-star">*</span> PATIENT NAME
+                    <span class="required-badge">Required</span>
+                </span>
+                <span class="char-counter" id="patientCounter"><i class="far fa-keyboard" style="margin-right: 4px;"></i>0/50</span>
+            </div>
+            <input type="text" id="patientName" placeholder="Enter full name" maxlength="50" value="">
+        </div>
+        <div class="field">
+            <div class="field-label">
+                <span class="label-left">
+                    <span class="required-star">*</span> BLOOD GROUP
+                    <span class="required-badge">Required</span>
+                </span>
+            </div>
+            <div class="blood-group-grid" id="bloodGroupGrid">
+                <span class="blood-option" data-blood="A+">A+</span>
+                <span class="blood-option" data-blood="A-">A-</span>
+                <span class="blood-option" data-blood="B+">B+</span>
+                <span class="blood-option" data-blood="B-">B-</span>
+                <span class="blood-option" data-blood="O+">O+</span>
+                <span class="blood-option" data-blood="O-">O-</span>
+                <span class="blood-option" data-blood="AB+">AB+</span>
+                <span class="blood-option" data-blood="AB-">AB-</span>
+            </div>
+        </div>
+        <div class="field">
+            <div class="field-label">
+                <span class="label-left">
+                    <span class="required-star">*</span> UNITS REQUIRED
+                    <span class="required-badge">Required</span>
+                </span>
+            </div>
+            <input type="number" id="units" min="1" max="10" placeholder="Enter number of units (1-10)" step="1" value="">
+            <span class="units-hint"><i class="fa-regular fa-circle-info"></i> 1–10 units only</span>
+        </div>
+        <div class="field">
+            <div class="field-label">
+                <span class="label-left">
+                    <span class="required-star">*</span> HOSPITAL NAME
+                    <span class="required-badge">Required</span>
+                </span>
+            </div>
+            <input type="text" id="hospital" placeholder="Enter hospital name">
+        </div>
+        <div class="field">
+            <div class="field-label">
+                <span class="label-left">
+                    <span class="required-star">*</span> CONTACT NUMBER
+                    <span class="required-badge">Required</span>
+                </span>
+            </div>
+            <input type="tel" id="contact" placeholder="Enter 10-digit mobile number" maxlength="10" pattern="\d*">
+        </div>
+        <div class="field">
+            <div class="field-label">
+                <span class="label-left">
+                    <span class="required-star">*</span> EMERGENCY LEVEL
+                    <span class="required-badge">Required</span>
+                </span>
+            </div>
+            <select id="emergency">
+                <option value="" disabled selected hidden>Select emergency level</option>
+                <option value="low">🟢 Low (within 24h)</option>
+                <option value="medium">🟠 Medium (within 6h)</option>
+                <option value="high">🔴 High (immediate)</option>
+                <option value="critical">💔 Critical — stat</option>
+            </select>
+        </div>
+        <div class="field">
+            <div class="field-label">
+                <span class="label-left">ADDITIONAL NOTES</span>
+                <span class="char-counter" id="notesCounter"><i class="far fa-keyboard"></i> 0/200</span>
+            </div>
+            <textarea id="notes" placeholder="Any additional information..." maxlength="200" rows="3"></textarea>
+            <div class="notes-tools">
+                <div class="quick-fill-btns">
+                    <span data-quick="Emergency - urgent"><i class="fa-solid fa-bolt"></i> Emergency</span>
+                    <span data-quick="Surgery - preoperative"><i class="fa-solid fa-syringe"></i> Surgery</span>
+                    <span data-quick="Accident - trauma"><i class="fa-solid fa-car-crash"></i> Accident</span>
+                </div>
+                <span class="grey-muted"><i class="fa-regular fa-message"></i> quick fill</span>
+            </div>
+        </div>
+        <div class="submit-area">
+            <button class="submit-btn" id="submitBtn"><i class="fas fa-hand-holding-droplet"></i> SUBMIT BLOOD REQUEST</button>
+        </div>
+        <hr>
+        <div id="successMessage" class="success-message" style="display: none;">
+            <i class="fas fa-check-circle"></i> Request submitted successfully!
+        </div>
+    </div>
+    <div class="recent-section">
+        <div class="recent-title">
+            <i class="fas fa-clock-rotate-left"></i> Recent Requests
+        </div>
+        <div id="recentRequests" class="no-recent"><i class="fa-regular fa-rectangle-xmark" style="margin-right: 6px;"></i>No recent requests</div>
+        <a href="#" class="view-link">View All Requests <i class="fas fa-arrow-right"></i></a>
+    </div>
+</div>
+</body>
+</html>

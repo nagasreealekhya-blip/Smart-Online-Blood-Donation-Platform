@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Blood Requests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/view request style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>LifeFlow</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-user"></i> Profile</a>
+                <a href="#" class="active"><i class="fas fa-list"></i> View Requests <span class="notification-badge">12</span></a>
+                <a href="#"><i class="fas fa-bell"></i> Notifications <span class="notification-badge">3</span></a>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-title-section">
+            <h1>
+                <i class="fas fa-list"></i>
+                View Blood Requests
+            </h1>
+            <p>Check the list of blood requests and help save lives. Every donation counts!</p>
+            <div class="stats-badge">
+                <span><i class="fas fa-clock"></i> 12 Active Requests</span>
+                <span><i class="fas fa-exclamation-triangle"></i> 4 Emergency</span>
+                <span><i class="fas fa-check-circle"></i> 8 Available</span>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-header">
+                <h3>
+                    <i class="fas fa-filter"></i>
+                    Search & Filter Requests
+                </h3>
+                <span class="clear-filters" onclick="clearFilters()">
+                    <i class="fas fa-times"></i> Clear All Filters
+                </span>
+            </div>
+            <div class="filter-grid">
+                <div class="filter-item">
+                    <label><i class="fas fa-user"></i> Patient Name</label>
+                    <input type="text" id="patientName" placeholder="Enter patient name">
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-tint"></i> Blood Group</label>
+                    <select id="bloodGroup">
+                        <option value="">All Blood Groups</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-map-marker-alt"></i> Location / City</label>
+                    <input type="text" id="location" placeholder="Enter city">
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-hospital"></i> Hospital Name</label>
+                    <input type="text" id="hospital" placeholder="Enter hospital name">
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-exclamation-triangle"></i> Urgency Level</label>
+                    <select id="urgency">
+                        <option value="">All Levels</option>
+                        <option value="emergency">Emergency</option>
+                        <option value="normal">Normal</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-calendar"></i> Date From</label>
+                    <input type="date" id="dateFrom">
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-calendar"></i> Date To</label>
+                    <input type="date" id="dateTo">
+                </div>
+                <div class="filter-item">
+                    <label><i class="fas fa-check-circle"></i> Status</label>
+                    <select id="status">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+            <button class="search-btn" onclick="searchRequests()">
+                <i class="fas fa-search"></i> Search Requests
+            </button>
+        </div>
+
+        <div class="table-section">
+            <div class="table-header">
+                <h3>
+                    <i class="fas fa-list"></i>
+                    Blood Requests List
+                </h3>
+                <div class="header-actions">
+                    <span class="results-count" id="resultsCount">12 Requests Found</span>
+                    <button class="export-btn" onclick="exportRequests()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table id="requestsTable">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Patient Name</th>
+                            <th>Blood Group</th>
+                            <th>Units</th>
+                            <th>Hospital</th>
+                            <th>Location</th>
+                            <th>Request Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Table rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <!-- Pagination will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Details Modal -->
+    <div class="modal" id="requestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-file-medical"></i>
+                    Request Details
+                </h2>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn secondary" onclick="closeModal()">Close</button>
+                <button class="modal-btn primary" onclick="contactFromModal()">Contact Patient</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-phone-alt"></i>
+                    Contact Patient
+                </h2>
+                <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="contactDetails"></div>
+                <div class="contact-options">
+                    <button class="contact-option" onclick="makeCall()">
+                        <i class="fas fa-phone"></i>
+                        <span>Call Now</span>
+                    </button>
+                    <button class="contact-option" onclick="sendEmail()">
+                        <i class="fas fa-envelope"></i>
+                        <span>Send Email</span>
+                    </button>
+                    <button class="contact-option" onclick="sendSMS()">
+                        <i class="fas fa-comment"></i>
+                        <span>Send SMS</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accept Confirmation Modal -->
+    <div class="modal" id="acceptModal">
+        <div class="modal-content" style="max-width: 400px;">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-check-circle"></i>
+                    Accept Request
+                </h2>
+                <span class="close-modal" onclick="closeAcceptModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to accept this blood request?</p>
+                <p class="warning-text">This action will notify the patient and update the request status.</p>
+                <div class="modal-footer">
+                    <button class="modal-btn secondary" onclick="closeAcceptModal()">Cancel</button>
+                    <button class="modal-btn primary" onclick="confirmAccept()">Confirm Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Action completed successfully!</span>
+    </div>
+
+</body>
+</html>

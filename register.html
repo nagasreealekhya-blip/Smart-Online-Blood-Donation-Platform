@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow | Register - Smart Blood Donation Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/register style.css">
+</head>
+<body>
+    <div class="register-wrapper">
+        <div class="register-card">
+            <div class="page-title">
+                <h1>LifeFlow</h1>
+                <div class="sub">REGISTER</div>
+            </div>
+
+            <form class="register-form" id="registerForm" action="#" novalidate>
+                <div class="input-group">
+                    <label for="fullname">
+                        <i class="fas fa-user"></i> Full Name
+                    </label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                    <div id="nameError" class="validation-message"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        <div id="emailError" class="validation-message"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">
+                            <i class="fas fa-phone-alt"></i> Phone Number
+                        </label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        <div id="phoneError" class="validation-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <input type="password" id="password" name="password" required>
+                        <div id="passwordError" class="validation-message"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirm">
+                            <i class="fas fa-check-circle"></i> Confirm Password
+                        </label>
+                        <input type="password" id="confirm" name="confirm" required>
+                        <div id="confirmError" class="validation-message"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="blood">
+                            <i class="fas fa-tint"></i> Blood Group
+                        </label>
+                        <select id="blood" name="blood" required>
+                            <option value="" disabled selected>Select blood group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                        <div id="bloodError" class="validation-message"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="gender">
+                            <i class="fas fa-venus-mars"></i> Gender
+                        </label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group" style="flex: 0.5;">
+                        <label for="age">
+                            <i class="fas fa-calendar-alt"></i> Age
+                        </label>
+                        <input type="number" id="age" name="age" min="18" required>
+                        <div id="ageError" class="validation-message"></div>
+                    </div>
+                    <div class="input-group" style="flex: 1.5;">
+                        <label>
+                            <i class="fas fa-check-double"></i> Available to Donate
+                        </label>
+                        <div class="availability-options">
+                            <label>
+                                <input type="radio" name="available" value="yes" checked> Available
+                            </label>
+                            <label>
+                                <input type="radio" name="available" value="no"> Not available
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="validationSummary" class="error-hint hidden">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="summaryText"></span>
+                </div>
+                <div id="successSummary" class="success-hint hidden">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="successText"></span>
+                </div>
+
+                <button type="submit" class="register-btn" id="registerBtn">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+
+                <div class="login-section">
+                    <span>Already have an account?</span>
+                    <a href="login.html" class="login-link">
+                        Login <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const registerForm = document.getElementById('registerForm');
+        const validationSummary = document.getElementById('validationSummary');
+        const successSummary = document.getElementById('successSummary');
+        const summaryText = document.getElementById('summaryText');
+        const successText = document.getElementById('successText');
+
+        const fields = {
+            fullname: document.getElementById('fullname'),
+            email: document.getElementById('email'),
+            phone: document.getElementById('phone'),
+            password: document.getElementById('password'),
+            confirm: document.getElementById('confirm'),
+            blood: document.getElementById('blood'),
+            age: document.getElementById('age')
+        };
+
+        function showFieldError(fieldId, message) {
+            const map = {
+                fullname: 'nameError',
+                email: 'emailError',
+                phone: 'phoneError',
+                password: 'passwordError',
+                confirm: 'confirmError',
+                blood: 'bloodError',
+                age: 'ageError'
+            };
+
+            document.getElementById(map[fieldId]).textContent = message;
+        }
+
+        registerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            Object.keys(fields).forEach((key) => showFieldError(key, ''));
+            validationSummary.classList.add('hidden');
+            successSummary.classList.add('hidden');
+
+            let hasError = false;
+
+            if (!fields.fullname.value.trim()) {
+                showFieldError('fullname', 'Full name is required.');
+                hasError = true;
+            }
+
+            if (!fields.email.value.trim()) {
+                showFieldError('email', 'Email is required.');
+                hasError = true;
+            }
+
+            if (!fields.phone.value.trim()) {
+                showFieldError('phone', 'Phone number is required.');
+                hasError = true;
+            }
+
+            if (fields.password.value.length < 6) {
+                showFieldError('password', 'Password must be at least 6 characters.');
+                hasError = true;
+            }
+
+            if (fields.password.value !== fields.confirm.value) {
+                showFieldError('confirm', 'Passwords do not match.');
+                hasError = true;
+            }
+
+            if (!fields.blood.value) {
+                showFieldError('blood', 'Select your blood group.');
+                hasError = true;
+            }
+
+            if (!fields.age.value || Number(fields.age.value) < 18) {
+                showFieldError('age', 'Age must be 18 or above.');
+                hasError = true;
+            }
+
+            if (hasError) {
+                summaryText.textContent = 'Please correct the highlighted fields before registering.';
+                validationSummary.classList.remove('hidden');
+                return;
+            }
+
+            successText.textContent = 'Registration form is complete and ready for backend integration.';
+            successSummary.classList.remove('hidden');
+            registerForm.reset();
+        });
+    </script>
+</body>
+</html>

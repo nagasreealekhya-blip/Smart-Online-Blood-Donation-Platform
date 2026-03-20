@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeFlow · Hospital Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/hospital dashboard style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-hospital"></i>
+        <span class="logo-text">LifeFlow</span>
+      </div>
+      
+      <!-- Hospital Badge (clickable using checkbox hack) -->
+      <div class="hospital-toggle-container">
+        <input type="checkbox" id="hospitalToggle" class="hospital-toggle">
+        <label for="hospitalToggle" class="hospital-badge">
+          <i class="fas fa-building"></i>
+          <div>
+            <p class="hospital-name">City General Hospital</p>
+            <p class="hospital-location"><i class="fas fa-map-marker-alt"></i> Boston · Blood stock critical</p>
+          </div>
+        </label>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active">
+            <a href="#dashboard">
+              <i class="fas fa-chart-pie"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#profile">
+              <i class="fas fa-building"></i>
+              <span>Hospital Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#post-requirement">
+              <i class="fas fa-plus-circle"></i>
+              <span>Post Requirement</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#donors">
+              <i class="fas fa-users"></i>
+              <span>View Donors</span>
+              <span class="badge">8</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#stock">
+              <i class="fas fa-thermometer-half"></i>
+              <span>Blood Stock</span>
+              <span class="badge emergency-badge">Critical</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#emergency">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>Emergency Requests</span>
+              <span class="badge emergency-badge">3</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#history">
+              <i class="fas fa-history"></i>
+              <span>Request History</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="logout-btn" id="logoutBtn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Dashboard Page (default visible) -->
+      <section id="dashboard" class="page active-page">
+        <div class="welcome-card">
+          <div class="welcome-text">
+            <h1>Welcome back, City General</h1>
+            <p><i class="fas fa-tint"></i> Blood stock critical · 3 emergency requests pending</p>
+          </div>
+          <div class="emergency-badge">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>CRITICAL</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Grid with new sections -->
+        <div class="dashboard-grid">
+          <!-- Inventory Overview Card -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-thermometer-half"></i>
+              <h2>Inventory Overview</h2>
+            </div>
+            <div class="inventory-summary">
+              <div class="inventory-item critical">
+                <span class="blood-type">A+</span>
+                <span class="blood-level">2 units</span>
+                <span class="level-badge critical">Critical</span>
+              </div>
+              <div class="inventory-item low">
+                <span class="blood-type">B+</span>
+                <span class="blood-level">5 units</span>
+                <span class="level-badge low">Low</span>
+              </div>
+              <div class="inventory-item normal">
+                <span class="blood-type">O+</span>
+                <span class="blood-level">12 units</span>
+                <span class="level-badge normal">Normal</span>
+              </div>
+              <div class="inventory-item critical">
+                <span class="blood-type">AB-</span>
+                <span class="blood-level">1 unit</span>
+                <span class="level-badge critical">Critical</span>
+              </div>
+              <div class="inventory-item low">
+                <span class="blood-type">A-</span>
+                <span class="blood-level">4 units</span>
+                <span class="level-badge low">Low</span>
+              </div>
+              <div class="inventory-item normal">
+                <span class="blood-type">O-</span>
+                <span class="blood-level">8 units</span>
+                <span class="level-badge normal">Normal</span>
+              </div>
+            </div>
+            <div class="inventory-stats">
+              <div class="stat">
+                <span class="stat-label">Total Units</span>
+                <span class="stat-value">32</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Critical</span>
+                <span class="stat-value critical">3</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Low</span>
+                <span class="stat-value low">2</span>
+              </div>
+            </div>
+            <button class="update-stock-btn">
+              <i class="fas fa-sync-alt"></i> Update Inventory
+            </button>
+          </div>
+
+          <!-- Blood Request Management Card -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-clipboard-list"></i>
+              <h2>Blood Request Management</h2>
+            </div>
+            <div class="request-table">
+              <table class="management-table">
+                <thead>
+                  <tr>
+                    <th>Blood Type</th>
+                    <th>Units</th>
+                    <th>Urgency</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="request-row urgent">
+                    <td><span class="blood-badge">O-</span></td>
+                    <td>3 units</td>
+                    <td><span class="urgency urgent">Emergency</span></td>
+                    <td><span class="request-status pending">Pending</span></td>
+                    <td><button class="action-btn">Process</button></td>
+                  </tr>
+                  <tr class="request-row">
+                    <td><span class="blood-badge">A+</span></td>
+                    <td>2 units</td>
+                    <td><span class="urgency high">High</span></td>
+                    <td><span class="request-status approved">Approved</span></td>
+                    <td><button class="action-btn">Schedule</button></td>
+                  </tr>
+                  <tr class="request-row">
+                    <td><span class="blood-badge">B+</span></td>
+                    <td>4 units</td>
+                    <td><span class="urgency medium">Medium</span></td>
+                    <td><span class="request-status pending">Pending</span></td>
+                    <td><button class="action-btn">Review</button></td>
+                  </tr>
+                  <tr class="request-row urgent">
+                    <td><span class="blood-badge">AB-</span></td>
+                    <td>1 unit</td>
+                    <td><span class="urgency urgent">Emergency</span></td>
+                    <td><span class="request-status pending">Pending</span></td>
+                    <td><button class="action-btn urgent-btn">Respond</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="view-all-btn">
+              <i class="fas fa-arrow-right"></i> View All Requests
+            </button>
+          </div>
+
+          <!-- Scheduled Appointments Card -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-calendar-check"></i>
+              <h2>Scheduled Appointments</h2>
+            </div>
+            <div class="appointments-list">
+              <div class="appointment-item today">
+                <div class="appointment-time">
+                  <span class="time-badge">Today</span>
+                  <span class="time">10:30 AM</span>
+                </div>
+                <div class="appointment-info">
+                  <h4>John Smith</h4>
+                  <p><i class="fas fa-tint"></i> Blood Donation · O+</p>
+                </div>
+                <button class="appointment-action">Confirm</button>
+              </div>
+              
+              <div class="appointment-item today">
+                <div class="appointment-time">
+                  <span class="time-badge">Today</span>
+                  <span class="time">2:00 PM</span>
+                </div>
+                <div class="appointment-info">
+                  <h4>Sarah Johnson</h4>
+                  <p><i class="fas fa-tint"></i> Blood Donation · B+</p>
+                </div>
+                <button class="appointment-action">Confirm</button>
+              </div>
+              
+              <div class="appointment-item tomorrow">
+                <div class="appointment-time">
+                  <span class="time-badge">Tomorrow</span>
+                  <span class="time">9:15 AM</span>
+                </div>
+                <div class="appointment-info">
+                  <h4>Michael Chen</h4>
+                  <p><i class="fas fa-tint"></i> Plasma Donation · A-</p>
+                </div>
+                <button class="appointment-action">Schedule</button>
+              </div>
+              
+              <div class="appointment-item tomorrow">
+                <div class="appointment-time">
+                  <span class="time-badge">Tomorrow</span>
+                  <span class="time">11:30 AM</span>
+                </div>
+                <div class="appointment-info">
+                  <h4>Emily Rodriguez</h4>
+                  <p><i class="fas fa-tint"></i> Blood Donation · AB+</p>
+                </div>
+                <button class="appointment-action">Schedule</button>
+              </div>
+            </div>
+            
+            <div class="appointment-stats">
+              <div class="stat">
+                <i class="fas fa-calendar-day"></i>
+                <span>8 Today</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-calendar-week"></i>
+                <span>23 This Week</span>
+              </div>
+            </div>
+            
+            <button class="view-all-btn">
+              <i class="fas fa-calendar-plus"></i> Manage Appointments
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hospital Profile Page -->
+      <section id="profile" class="page">
+        <div class="welcome-card">
+          <h1>Hospital Profile</h1>
+          <p>Manage your hospital information</p>
+        </div>
+        <div class="card">
+          <div class="profile-row">
+            <div class="profile-item">
+              <i class="fas fa-hospital"></i>
+              <strong>Hospital Name:</strong>
+              <span>City General Hospital</span>
+            </div>
+            <div class="profile-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <strong>Address:</strong>
+              <span>123 Main Street, Boston, MA 02108</span>
+            </div>
+            <div class="profile-item">
+              <i class="fas fa-phone"></i>
+              <strong>Emergency:</strong>
+              <span>+1 (555) 911-1234</span>
+            </div>
+            <div class="profile-item">
+              <i class="fas fa-envelope"></i>
+              <strong>Email:</strong>
+              <span>contact@citygeneral.org</span>
+            </div>
+            <div class="profile-item">
+              <i class="fas fa-user-md"></i>
+              <strong>Blood Bank In-charge:</strong>
+              <span>Dr. Sarah Williams</span>
+            </div>
+            <div class="profile-item">
+              <i class="fas fa-clock"></i>
+              <strong>Operating Hours:</strong>
+              <span>24/7 Emergency · 8AM-8PM Regular</span>
+            </div>
+          </div>
+          <button class="post-btn">
+            <i class="fas fa-edit"></i> Edit Profile
+          </button>
+        </div>
+      </section>
+
+      <!-- Post Requirement Page -->
+      <section id="post-requirement" class="page">
+        <div class="welcome-card">
+          <h1>Post Blood Requirement</h1>
+          <p>Create a new blood request</p>
+        </div>
+        <div class="card">
+          <form class="requirement-form">
+            <select required>
+              <option value="">Select Blood Type</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>O+</option>
+              <option>O-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+            </select>
+            
+            <input type="number" placeholder="Units Required" min="1" required>
+            
+            <select required>
+              <option value="">Urgency Level</option>
+              <option>Emergency (Within 24h)</option>
+              <option>Urgent (Within 48h)</option>
+              <option>Standard (Within 1 week)</option>
+            </select>
+            
+            <input type="text" placeholder="Patient/Department" required>
+            
+            <textarea rows="4" placeholder="Additional requirements or notes..."></textarea>
+            
+            <button type="submit" class="post-btn">
+              <i class="fas fa-paper-plane"></i> Post Requirement
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- View Donors Page -->
+      <section id="donors" class="page">
+        <div class="welcome-card">
+          <h1>Available Donors</h1>
+          <p>8 donors available near you</p>
+        </div>
+        <div class="card">
+          <div class="donor-item">
+            <div class="donor-info">
+              <p><strong>Michael Chen</strong> · B+ · 2.3km away</p>
+              <p>Last donation: 3 months ago · Available now</p>
+            </div>
+            <button class="contact-donor-btn">
+              <i class="fas fa-comment"></i> Contact
+            </button>
+          </div>
+          <div class="donor-item">
+            <div class="donor-info">
+              <p><strong>Emily Rodriguez</strong> · B+ · 3.1km away</p>
+              <p>Last donation: 1 month ago · Available tomorrow</p>
+            </div>
+            <button class="contact-donor-btn">
+              <i class="fas fa-comment"></i> Contact
+            </button>
+          </div>
+          <div class="donor-item">
+            <div class="donor-info">
+              <p><strong>David Kim</strong> · O+ · 4.0km away</p>
+              <p>Last donation: 2 weeks ago · Available now</p>
+            </div>
+            <button class="contact-donor-btn">
+              <i class="fas fa-comment"></i> Contact
+            </button>
+          </div>
+          <div class="donor-item">
+            <div class="donor-info">
+              <p><strong>Sarah Johnson</strong> · A- · 1.5km away</p>
+              <p>Last donation: 2 months ago · Available now</p>
+            </div>
+            <button class="contact-donor-btn">
+              <i class="fas fa-comment"></i> Contact
+            </button>
+          </div>
+          <button class="view-all-btn">View All Donors</button>
+        </div>
+      </section>
+
+      <!-- Blood Stock Page -->
+      <section id="stock" class="page">
+        <div class="welcome-card">
+          <h1>Blood Stock Inventory</h1>
+          <p>Current blood levels · 3 critical levels</p>
+        </div>
+        <div class="card">
+          <table class="stock-table">
+            <thead>
+              <tr>
+                <th>Blood Type</th>
+                <th>Units Available</th>
+                <th>Status</th>
+                <th>Last Updated</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A+</strong></td>
+                <td>2 units</td>
+                <td><span class="stock-level level-critical">CRITICAL</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Request</button></td>
+              </tr>
+              <tr>
+                <td><strong>A-</strong></td>
+                <td>4 units</td>
+                <td><span class="stock-level level-low">LOW</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Request</button></td>
+              </tr>
+              <tr>
+                <td><strong>B+</strong></td>
+                <td>5 units</td>
+                <td><span class="stock-level level-low">LOW</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Request</button></td>
+              </tr>
+              <tr>
+                <td><strong>B-</strong></td>
+                <td>3 units</td>
+                <td><span class="stock-level level-low">LOW</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Request</button></td>
+              </tr>
+              <tr>
+                <td><strong>O+</strong></td>
+                <td>12 units</td>
+                <td><span class="stock-level level-ok">NORMAL</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Update</button></td>
+              </tr>
+              <tr>
+                <td><strong>O-</strong></td>
+                <td>8 units</td>
+                <td><span class="stock-level level-ok">NORMAL</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Update</button></td>
+              </tr>
+              <tr>
+                <td><strong>AB+</strong></td>
+                <td>6 units</td>
+                <td><span class="stock-level level-ok">NORMAL</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Update</button></td>
+              </tr>
+              <tr>
+                <td><strong>AB-</strong></td>
+                <td>1 unit</td>
+                <td><span class="stock-level level-critical">CRITICAL</span></td>
+                <td>Today, 8:00 AM</td>
+                <td><button class="update-stock-btn small">Request</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="update-stock-btn">
+            <i class="fas fa-sync-alt"></i> Update Stock Levels
+          </button>
+        </div>
+      </section>
+
+      <!-- Emergency Requests Page -->
+      <section id="emergency" class="page">
+        <div class="welcome-card">
+          <h1>Emergency Requests</h1>
+          <p>3 urgent requests pending</p>
+        </div>
+        <div class="card">
+          <div class="emergency-item">
+            <div class="request-details">
+              <h3><i class="fas fa-exclamation-triangle"></i> O- Emergency</h3>
+              <p>3 units needed · Boston Children's Hospital</p>
+              <p><i class="fas fa-clock"></i> 10 minutes ago · Critical patient</p>
+            </div>
+            <div class="emergency-actions">
+              <button class="respond-btn">Accept</button>
+              <button class="respond-btn secondary">Contact</button>
+            </div>
+          </div>
+          <div class="emergency-item">
+            <div class="request-details">
+              <h3><i class="fas fa-exclamation-triangle"></i> B+ Emergency</h3>
+              <p>2 units needed · City General Hospital</p>
+              <p><i class="fas fa-clock"></i> 25 minutes ago · Surgery pending</p>
+            </div>
+            <div class="emergency-actions">
+              <button class="respond-btn">Accept</button>
+              <button class="respond-btn secondary">Contact</button>
+            </div>
+          </div>
+          <div class="emergency-item">
+            <div class="request-details">
+              <h3><i class="fas fa-exclamation-triangle"></i> AB- Emergency</h3>
+              <p>1 unit needed · St. Mary's Medical</p>
+              <p><i class="fas fa-clock"></i> 1 hour ago · Rare blood type</p>
+            </div>
+            <div class="emergency-actions">
+              <button class="respond-btn">Accept</button>
+              <button class="respond-btn secondary">Contact</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Request History Page -->
+      <section id="history" class="page">
+        <div class="welcome-card">
+          <h1>Request History</h1>
+          <p>View past blood requests</p>
+        </div>
+        <div class="card">
+          <div class="history-item">
+            <div>
+              <p><strong>O- Emergency</strong> · 3 units</p>
+              <p>Boston Children's Hospital · 2 days ago</p>
+            </div>
+            <span class="history-status status-fulfilled">Fulfilled</span>
+          </div>
+          <div class="history-item">
+            <div>
+              <p><strong>A+ Plasma</strong> · 2 units</p>
+              <p>City General Hospital · 3 days ago</p>
+            </div>
+            <span class="history-status status-fulfilled">Fulfilled</span>
+          </div>
+          <div class="history-item">
+            <div>
+              <p><strong>B+ Emergency</strong> · 2 units</p>
+              <p>St. Mary's Medical · 5 days ago</p>
+            </div>
+            <span class="history-status status-pending">In Progress</span>
+          </div>
+          <div class="history-item">
+            <div>
+              <p><strong>AB- Rare</strong> · 1 unit</p>
+              <p>Memorial Hospital · 1 week ago</p>
+            </div>
+            <span class="history-status status-fulfilled">Fulfilled</span>
+          </div>
+          <button class="view-all-btn">Load More History</button>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

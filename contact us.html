@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/contact us style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>LifeFlow</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="donor list.html"><i class="fas fa-donate"></i> Donate / Find Donor</a>
+                <a href="contact us.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login / Register</a>
+            </div>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <i class="fas fa-tint"></i>
+                <h2>LifeFlow</h2>
+                <button class="close-mobile" id="closeMobile" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="donor list.html"><i class="fas fa-donate"></i> Donate / Find Donor</a>
+                <a href="contact us.html" class="active"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login / Register</a>
+            </div>
+            <div class="mobile-nav-social">
+                <a href="#" class="social-link-mobile" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link-mobile" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link-mobile" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link-mobile" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <section class="banner" id="contact">
+        <div class="banner-content">
+            <h1>Contact Us</h1>
+            <p>If you need help finding blood donors or have any questions, please contact us. We're here to save lives together.</p>
+        </div>
+        <div class="banner-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,120 C240,100 480,20 720,20 C960,20 1200,100 1440,80 L1440,120 L0,120 Z" fill="#fff5f5"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Contact Info Cards -->
+        <section class="contact-info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>📍 Address</h3>
+                <p>123 Health Avenue<br>New Delhi, India - 500001</p>
+                <span class="info-tag">Head Office</span>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>📞 Phone Number</h3>
+                <p>
+                    <a href="tel:+911800000000">+91 1800-000-000</a><br>
+                    <a href="tel:+911800111111">+91 1800-111-111</a>
+                </p>
+                <span class="info-tag">24/7 Helpline</span>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>📧 Email Address</h3>
+                <p>
+                    <a href="mailto:support@lifeflow.com">support@lifeflow.com</a><br>
+                    <a href="mailto:emergency@lifeflow.com">emergency@lifeflow.com</a>
+                </p>
+                <span class="info-tag">Quick Response</span>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>⏰ Working Hours</h3>
+                <p>Monday - Saturday<br>9:00 AM – 6:00 PM</p>
+                <span class="info-tag">Emergency: 24/7</span>
+            </div>
+        </section>
+
+        <!-- Contact Form & Map -->
+        <section class="contact-main">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm" novalidate>
+                    <div class="form-group" id="nameGroup">
+                        <label for="name">Your Full Name <span aria-hidden="true">*</span></label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            placeholder="Enter your full name" 
+                            required>
+                        <div class="error-message" id="nameError" role="alert"></div>
+                    </div>
+
+                    <div class="form-group" id="emailGroup">
+                        <label for="email">Your Email Address <span aria-hidden="true">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="Enter your email address" 
+                            required>
+                        <div class="error-message" id="emailError" role="alert"></div>
+                    </div>
+
+                    <div class="form-group" id="phoneGroup">
+                        <label for="phone">Your Phone Number <span aria-hidden="true">*</span></label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone"
+                            placeholder="Enter your phone number" 
+                            required>
+                        <div class="error-message" id="phoneError" role="alert"></div>
+                    </div>
+
+                    <div class="form-group" id="subjectGroup">
+                        <label for="subject">Select Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="" disabled selected>Select a subject</option>
+                            <option value="donation">🩸 Blood Donation Query</option>
+                            <option value="request">🏥 Blood Request</option>
+                            <option value="partnership">🤝 Partnership Opportunity</option>
+                            <option value="feedback">💬 Feedback</option>
+                            <option value="other">📝 Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="messageGroup">
+                        <label for="message">Your Message <span aria-hidden="true">*</span></label>
+                        <textarea 
+                            id="message" 
+                            name="message"
+                            placeholder="Write your message here..." 
+                            required
+                            minlength="10"></textarea>
+                        <div class="error-message" id="messageError" role="alert"></div>
+                    </div>
+
+                    <button type="submit" class="send-btn" id="submitBtn">
+                        <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+                        <span class="btn-loader" style="display: none;">
+                            <i class="fas fa-circle-notch fa-spin"></i> Sending...
+                        </span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Map Container -->
+            <div class="map-container">
+                <h2>Our Location</h2>
+                <div class="map-wrapper">
+                    <div class="map" id="map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.6380161414!2d78.26795473464364!3d17.412299976221533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1705400000000!5m2!1sen!2sin" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            title="LifeFlow Location in Hyderabad, Telangana">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="map-overlay" id="mapOverlay">
+                    <p><i class="fas fa-map-pin"></i> Click to interact with map</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Section -->
+        <section class="emergency-section">
+            <div class="emergency-content">
+                <h2>🚨 Emergency Blood Request</h2>
+                <p>Need blood urgently? We're here to help 24/7. Click below for immediate assistance.</p>
+                <button class="emergency-btn" id="emergencyBtn">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Request Blood Now
+                </button>
+            </div>
+            <div class="emergency-pulse"></div>
+        </section>
+
+        <!-- Social Section -->
+        <section class="social-section">
+            <h2>Connect With Us</h2>
+            <div class="social-links">
+                <a href="#" class="social-link" data-platform="Facebook" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link" data-platform="Instagram" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link" data-platform="Twitter" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" data-platform="LinkedIn" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" data-platform="WhatsApp" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-link" data-platform="Telegram" aria-label="Telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-question-circle"></i> How to register as a donor?</h3>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Click on the "Register" button, fill in your details, verify your email, and complete your profile. It takes less than 5 minutes.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-question-circle"></i> How to request blood?</h3>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Navigate to "Find Donor" section, specify blood group and location, and submit your request. Donors in your area will be notified.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-question-circle"></i> Who can donate blood?</h3>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Healthy individuals aged 18-60, weighing above 50kg, with no recent illnesses or medications. First-time donors are welcome!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-question-circle"></i> Is donation safe?</h3>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all equipment is sterile and single-use. Medical professionals supervise each donation to ensure complete safety.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="register.html"><i class="fas fa-chevron-right"></i> Donate Blood</a></li>
+                    <li><a href="donor list.html"><i class="fas fa-chevron-right"></i> Find Donor</a></li>
+                    <li><a href="contact us.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Health Avenue, New Delhi, India</li>
+                    <li><i class="fas fa-phone"></i> <a href="tel:+911800000000">+91 1800-000-000</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:support@lifeflow.com">support@lifeflow.com</a></li>
+                </ul>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe for updates and news</p>
+                <form id="newsletterForm">
+                    <div class="newsletter-group">
+                        <input 
+                            type="email" 
+                            id="newsletterEmail" 
+                            name="newsletter_email"
+                            placeholder="Your Email" 
+                            required
+                            aria-label="Subscribe to our newsletter">
+                        <button type="submit" aria-label="Subscribe">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="newsletter-message" id="newsletterMessage" role="alert"></div>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LifeFlow - Smart Online Blood Donation Platform. All rights reserved.</p>
+            <p class="footer-links">
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+            <button class="modal-close-btn" onclick="closeModal()" aria-label="Close modal">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobile = document.getElementById('closeMobile');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successModal = document.getElementById('successModal');
+        const emergencyBtn = document.getElementById('emergencyBtn');
+        const backToTop = document.getElementById('backToTop');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterMessage = document.getElementById('newsletterMessage');
+        const mapOverlay = document.getElementById('mapOverlay');
+        const mapLink = 'https://www.google.com/maps/place/Hyderabad,+Telangana/';
+
+        function closeModal() {
+            successModal.style.display = 'none';
+        }
+
+        function toggleMobileMenu(show) {
+            mobileNavOverlay.classList.toggle('active', show);
+            document.body.classList.toggle('menu-open', show);
+        }
+
+        mobileMenu?.addEventListener('click', () => toggleMobileMenu(true));
+        closeMobile?.addEventListener('click', () => toggleMobileMenu(false));
+        mobileNavOverlay?.addEventListener('click', (event) => {
+            if (event.target === mobileNavOverlay) {
+                toggleMobileMenu(false);
+            }
+        });
+
+        mapOverlay?.addEventListener('click', () => {
+            window.open(mapLink, '_blank', 'noopener');
+        });
+
+        faqItems.forEach((item) => {
+            item.querySelector('.faq-question')?.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        contactForm?.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const fields = [
+                { id: 'name', error: 'nameError', message: 'Name is required.' },
+                { id: 'email', error: 'emailError', message: 'Email is required.' },
+                { id: 'phone', error: 'phoneError', message: 'Phone is required.' },
+                { id: 'message', error: 'messageError', message: 'Message should be at least 10 characters.' }
+            ];
+
+            let hasError = false;
+
+            fields.forEach((field) => {
+                const input = document.getElementById(field.id);
+                const errorBox = document.getElementById(field.error);
+                const value = input.value.trim();
+                const invalidMessage = field.id === 'message' && value.length < 10 ? field.message : (!value ? field.message : '');
+                errorBox.textContent = invalidMessage;
+                if (invalidMessage) {
+                    hasError = true;
+                }
+            });
+
+            if (hasError) {
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.querySelector('.btn-text').style.display = 'none';
+            submitBtn.querySelector('.btn-loader').style.display = 'inline-flex';
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.querySelector('.btn-text').style.display = 'inline-flex';
+                submitBtn.querySelector('.btn-loader').style.display = 'none';
+                successModal.style.display = 'flex';
+                contactForm.reset();
+            }, 800);
+        });
+
+        emergencyBtn?.addEventListener('click', () => {
+            window.location.href = 'blood request.html';
+        });
+
+        newsletterForm?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            newsletterMessage.textContent = 'Subscribed successfully.';
+        });
+
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 240 ? 'inline-flex' : 'none';
+        });
+
+        backToTop?.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeFlow · Patient Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/patient dashboard style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span class="logo-text">LifeFlow</span>
+      </div>
+      
+      <!-- Profile badge (clickable using checkbox hack) -->
+      <div class="profile-toggle-container">
+        <input type="checkbox" id="profileToggle" class="profile-toggle">
+        <label for="profileToggle" class="patient-badge">
+          <i class="fas fa-user-circle"></i>
+          <div>
+            <p class="patient-name">Sarah Johnson</p>
+            <p class="patient-need"><i class="fas fa-tint"></i> Need B+ · Boston</p>
+          </div>
+        </label>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active">
+            <a href="#dashboard">
+              <i class="fas fa-chart-pie"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#search">
+              <i class="fas fa-search"></i>
+              <span>Search Donors</span>
+              <span class="badge">3</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#request">
+              <i class="fas fa-tint"></i>
+              <span>Request Blood</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#myrequests">
+              <i class="fas fa-clipboard-list"></i>
+              <span>My Requests</span>
+              <span class="badge emergency-badge">2</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#notifications">
+              <i class="fas fa-bell"></i>
+              <span>Notifications</span>
+              <span class="badge">1</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#emergency">
+              <i class="fas fa-phone-volume"></i>
+              <span>Emergency</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button class="logout-btn" id="logoutBtn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Dashboard Page (default visible) -->
+      <section id="dashboard" class="page active-page">
+        <div class="welcome-card">
+          <div class="welcome-text">
+            <h1>Welcome back, Sarah!</h1>
+            <p>Your blood type <strong>B+</strong> is in demand · 3 matches found</p>
+          </div>
+          <div class="emergency-badge">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>URGENT</span>
+          </div>
+        </div>
+
+        <!-- Quick Emergency Action Button -->
+        <a href="#emergency" class="quick-emergency-btn">
+          <i class="fas fa-phone-volume"></i>
+          <span>Create Emergency Request</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Live Request Tracker Card -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-clock"></i>
+              <h2>Live Request Tracker</h2>
+            </div>
+            <div class="live-tracker">
+              <div class="tracker-item urgent">
+                <span class="tracker-status urgent"></span>
+                <div class="tracker-info">
+                  <h4>Emergency: B+ needed</h4>
+                  <p>City Hospital · 2km away · 10 min ago</p>
+                </div>
+                <span class="tracker-time">NOW</span>
+              </div>
+              
+              <div class="tracker-item">
+                <span class="tracker-status"></span>
+                <div class="tracker-info">
+                  <h4>Blood donation camp</h4>
+                  <p>Red Cross · 5km away · 30 min ago</p>
+                </div>
+                <span class="tracker-time">SOON</span>
+              </div>
+              
+              <div class="tracker-item fulfilled">
+                <span class="tracker-status fulfilled"></span>
+                <div class="tracker-info">
+                  <h4>Request fulfilled: A-</h4>
+                  <p>St. Mary's Hospital · 1 hour ago</p>
+                </div>
+                <span class="tracker-time">DONE</span>
+              </div>
+            </div>
+            <a href="#myrequests" class="view-all-link">View all requests →</a>
+          </div>
+
+          <!-- Donor Matching Card -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-hand-holding-heart"></i>
+              <h2>Donor Matching</h2>
+            </div>
+            <div class="donor-match-card">
+              <div class="match-percentage">95%</div>
+              <div class="match-info">
+                <h3>Michael Chen</h3>
+                <p><i class="fas fa-tint"></i> B+ · 2.3km away</p>
+                <p class="match-details">Last donation: 3 months ago</p>
+              </div>
+              <button class="contact-btn">
+                <i class="fas fa-comment"></i> Contact
+              </button>
+            </div>
+            
+            <div class="donor-match-card">
+              <div class="match-percentage">87%</div>
+              <div class="match-info">
+                <h3>Emily Rodriguez</h3>
+                <p><i class="fas fa-tint"></i> B+ · 3.1km away</p>
+                <p class="match-details">Last donation: 1 month ago</p>
+              </div>
+              <button class="contact-btn">
+                <i class="fas fa-comment"></i> Contact
+              </button>
+            </div>
+            
+            <div class="donor-match-card">
+              <div class="match-percentage">82%</div>
+              <div class="match-info">
+                <h3>David Kim</h3>
+                <p><i class="fas fa-tint"></i> O+ (compatible) · 4.0km away</p>
+                <p class="match-details">Last donation: 2 weeks ago</p>
+              </div>
+              <button class="contact-btn">
+                <i class="fas fa-comment"></i> Contact
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Requests Card -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-clipboard-list"></i>
+              <h2>Recent Requests</h2>
+            </div>
+            <div class="request-item">
+              <div class="request-details">
+                <p><strong>B+ Emergency</strong> · City Hospital</p>
+                <p>2 units needed · 2 hours ago</p>
+              </div>
+              <span class="status-badge pending">Pending</span>
+            </div>
+            <div class="request-item">
+              <div class="request-details">
+                <p><strong>A- Plasma</strong> · Blood Center</p>
+                <p>1 unit · Yesterday</p>
+              </div>
+              <span class="status-badge fulfilled">Fulfilled</span>
+            </div>
+            <a href="#myrequests" class="view-all-link">View all requests →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Page (hidden by default, shown when profile toggle is checked) -->
+      <section id="profile" class="page">
+        <div class="profile-container">
+          <div class="profile-header">
+            <i class="fas fa-user-circle profile-avatar"></i>
+            <h2>Sarah Johnson</h2>
+            <p><i class="fas fa-tint"></i> Blood Type B+ · Boston, MA</p>
+          </div>
+          
+          <div class="profile-grid">
+            <div class="profile-card">
+              <h3><i class="fas fa-id-card"></i> Personal Information</h3>
+              <div class="profile-info-item">
+                <span class="profile-label">Full Name</span>
+                <span class="profile-value">Sarah Johnson</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Age</span>
+                <span class="profile-value">28 years</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Blood Type</span>
+                <span class="profile-value">B+</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Location</span>
+                <span class="profile-value">Boston, MA</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Member Since</span>
+                <span class="profile-value">January 2024</span>
+              </div>
+            </div>
+
+            <div class="profile-card">
+              <h3><i class="fas fa-medical"></i> Medical History</h3>
+              <div class="profile-info-item">
+                <span class="profile-label">Last Donation</span>
+                <span class="profile-value">3 months ago</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Total Donations</span>
+                <span class="profile-value">8</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Eligibility</span>
+                <span class="profile-value eligible">Eligible</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Medical Conditions</span>
+                <span class="profile-value">None</span>
+              </div>
+            </div>
+
+            <div class="profile-card">
+              <h3><i class="fas fa-address-book"></i> Contact Details</h3>
+              <div class="profile-info-item">
+                <span class="profile-label">Email</span>
+                <span class="profile-value">sarah.j@email.com</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Phone</span>
+                <span class="profile-value">+1 (555) 123-4567</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Emergency Contact</span>
+                <span class="profile-value">+1 (555) 987-6543</span>
+              </div>
+            </div>
+
+            <div class="profile-card">
+              <h3><i class="fas fa-chart-line"></i> Statistics</h3>
+              <div class="profile-info-item">
+                <span class="profile-label">Requests Made</span>
+                <span class="profile-value">12</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Fulfilled Requests</span>
+                <span class="profile-value">9</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Pending Requests</span>
+                <span class="profile-value">3</span>
+              </div>
+              <div class="profile-info-item">
+                <span class="profile-label">Life Points</span>
+                <span class="profile-value">450</span>
+              </div>
+            </div>
+          </div>
+          
+          <button class="edit-profile-btn">
+            <i class="fas fa-edit"></i> Edit Profile
+          </button>
+        </div>
+      </section>
+
+      <!-- Other pages (minimal content for navigation) -->
+      <section id="search" class="page">
+        <div class="welcome-card">
+          <h1>Search Donors</h1>
+          <p>Find compatible blood donors near you</p>
+        </div>
+        <div class="card">
+          <div class="search-box">
+            <select>
+              <option>Blood Type B+</option>
+              <option>Blood Type A+</option>
+              <option>Blood Type O+</option>
+              <option>Blood Type AB+</option>
+            </select>
+            <input type="text" placeholder="Enter location...">
+            <button><i class="fas fa-search"></i> Search</button>
+          </div>
+          <div class="donor-result">
+            <div class="donor-info">
+              <p><strong>Michael Chen</strong> · B+ · 2.3km</p>
+              <p>Available now · Last donation 3mo ago</p>
+            </div>
+            <button class="contact-btn"><i class="fas fa-comment"></i> Contact</button>
+          </div>
+          <div class="donor-result">
+            <div class="donor-info">
+              <p><strong>Emily Rodriguez</strong> · B+ · 3.1km</p>
+              <p>Available tomorrow · Last donation 1mo ago</p>
+            </div>
+            <button class="contact-btn"><i class="fas fa-comment"></i> Contact</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="request" class="page">
+        <div class="welcome-card">
+          <h1>Request Blood</h1>
+          <p>Create a new blood request</p>
+        </div>
+        <div class="card">
+          <div class="request-form">
+            <select>
+              <option>Select Blood Type</option>
+              <option>A+</option>
+              <option>B+</option>
+              <option>O+</option>
+              <option>AB+</option>
+            </select>
+            <input type="text" placeholder="Hospital/Location">
+            <input type="number" placeholder="Units needed">
+            <select>
+              <option>Urgency Level</option>
+              <option>Emergency (Within 24h)</option>
+              <option>Urgent (Within 3 days)</option>
+              <option>Standard (Within week)</option>
+            </select>
+            <textarea rows="3" placeholder="Additional notes..."></textarea>
+            <button class="submit-request">
+              <i class="fas fa-paper-plane"></i> Submit Request
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="myrequests" class="page">
+        <div class="welcome-card">
+          <h1>My Requests</h1>
+          <p>Track your blood requests</p>
+        </div>
+        <div class="card">
+          <div class="request-item">
+            <div class="request-details">
+              <p><strong>B+ Emergency</strong> · City Hospital</p>
+              <p>2 units · Requested 2 hours ago</p>
+            </div>
+            <div>
+              <span class="status-badge pending">Pending</span>
+              <button class="track-btn">Track</button>
+            </div>
+          </div>
+          <div class="request-item">
+            <div class="request-details">
+              <p><strong>A- Plasma</strong> · Blood Center</p>
+              <p>1 unit · Requested yesterday</p>
+            </div>
+            <div>
+              <span class="status-badge fulfilled">Fulfilled</span>
+              <button class="track-btn">Track</button>
+            </div>
+          </div>
+          <div class="request-item urgent">
+            <div class="request-details">
+              <p><strong>O+ Emergency</strong> · St. Mary's</p>
+              <p>3 units · Requested 30 min ago</p>
+            </div>
+            <div>
+              <span class="status-badge pending">Urgent</span>
+              <button class="track-btn">Track</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notifications" class="page">
+        <div class="welcome-card">
+          <h1>Notifications</h1>
+          <p>Stay updated with your requests</p>
+        </div>
+        <div class="card">
+          <div class="notification-list">
+            <div class="notif-item urgent">
+              <i class="fas fa-exclamation-circle"></i>
+              <div>
+                <p><strong>Urgent: B+ needed at City Hospital</strong></p>
+                <p>2 units required within 24 hours</p>
+              </div>
+              <span class="notif-time">10 min ago</span>
+            </div>
+            <div class="notif-item">
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <p><strong>Request fulfilled</strong></p>
+                <p>Your A- request at Blood Center is complete</p>
+              </div>
+              <span class="notif-time">1 hour ago</span>
+            </div>
+            <div class="notif-item">
+              <i class="fas fa-hand-holding-heart"></i>
+              <div>
+                <p><strong>New donor matched</strong></p>
+                <p>Michael Chen is available for B+ donation</p>
+              </div>
+              <span class="notif-time">3 hours ago</span>
+            </div>
+          </div>
+          <button class="view-all-btn">View All Notifications</button>
+        </div>
+      </section>
+
+      <section id="emergency" class="page">
+        <div class="welcome-card emergency">
+          <h1>Emergency Request</h1>
+          <p>Quick action for urgent blood needs</p>
+        </div>
+        <div class="card emergency-card">
+          <div class="request-form">
+            <h3><i class="fas fa-exclamation-triangle"></i> Emergency Blood Request</h3>
+            <select>
+              <option>Select Blood Type</option>
+              <option>A+</option>
+              <option>B+</option>
+              <option>O+</option>
+              <option>AB+</option>
+            </select>
+            <input type="text" placeholder="Hospital/Location" value="City Hospital - Emergency">
+            <input type="number" placeholder="Units needed" value="2">
+            <textarea rows="3">URGENT: Patient in critical condition. Need immediate blood donation.</textarea>
+            <button class="submit-request emergency">
+              <i class="fas fa-phone-volume"></i> Send Emergency Alert
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeFlow · Donor Dashboard</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- external CSS (donor-dashboard.css) -->
+  <link rel="stylesheet" href="../css/donor dashboard style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-droplet"></i>
+        <span class="logo-text">LifeFlow</span>
+      </div>
+      
+      <div class="donor-badge">
+        <i class="fas fa-user-circle"></i>
+        <div>
+          <p class="donor-name">Johnathan Smith</p>
+          <p class="donor-blood"><i class="fas fa-tint"></i> O+ · 32 yrs</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active"><i class="fas fa-chart-pie"></i><span>Dashboard</span></li>
+          <li class="nav-item"><i class="fas fa-map-marked-alt"></i><span>Donation Map</span></li>
+          <li class="nav-item"><i class="fas fa-hand-holding-heart"></i><span>Blood Requests</span><span class="badge">3</span></li>
+          <li class="nav-item"><i class="fas fa-history"></i><span>History</span></li>
+          <li class="nav-item"><i class="fas fa-award"></i><span>Rewards</span></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></button>
+      </div>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-content">
+      <!-- header with welcome & status -->
+      <header class="content-header">
+        <div class="welcome-text">
+          <h1>Welcome Back, Johnathan!</h1>
+          <p>Your blood type <strong>O+</strong> is currently in high demand nearby.</p>
+        </div>
+        <div class="status-pill">
+          <span class="pulse"></span> Available to Donate
+        </div>
+      </header>
+
+      <!-- stats cards -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="icon-circle red"><i class="fas fa-heartbeat"></i></div>
+          <div><h3>4</h3><p>Donations</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-circle blue"><i class="fas fa-tint"></i></div>
+          <div><h3>1,800ml</h3><p>Blood Donated</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="icon-circle gold"><i class="fas fa-star"></i></div>
+          <div><h3>120</h3><p>Life Points</p></div>
+        </div>
+      </section>
+
+      <!-- map + nearby panel (enhanced) -->
+      <section class="map-section">
+        <div class="section-title">
+          <h2><i class="fas fa-location-dot"></i> Live Donation Map</h2>
+          <p>Finding nearest emergency requests and blood banks...</p>
+        </div>
+        
+        <div class="map-wrapper">
+          <!-- map iframe (embedded) -->
+          <div class="map-box">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.8392319277!2d77.0688975472!3d28.5272803437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b71da62c95!2sDelhi!5e0!3m2!1sen!2sin!4v1710590000000!5m2!1sen!2sin" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+
+          <!-- right panel: nearby centers (added extra info & icons) -->
+          <div class="map-panel">
+            <h3>Nearby Centers <span class="panel-badge"><i class="fa-solid fa-location-arrow"></i> 3 active</span></h3>
+            
+            <div class="location-item urgent">
+              <div class="loc-info">
+                <h4><i class="fas fa-hospital"></i> Apollo Hospital</h4>
+                <p><i class="fas fa-map-pin"></i> 0.8 km • <span class="tag">Critical O+</span></p>
+                <small><i class="far fa-clock"></i> 15 min ago</small>
+              </div>
+              <button class="btn-go" aria-label="navigate to Apollo"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="location-item">
+              <div class="loc-info">
+                <h4><i class="fas fa-building"></i> City Blood Bank</h4>
+                <p><i class="fas fa-map-pin"></i> 2.1 km • <span class="tag green">Stock OK</span></p>
+                <small><i class="far fa-clock"></i> 1 hour ago</small>
+              </div>
+              <button class="btn-go" aria-label="navigate to City Blood Bank"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="location-item">
+              <div class="loc-info">
+                <h4><i class="fas fa-flag"></i> Red Cross Camp</h4>
+                <p><i class="fas fa-map-pin"></i> 4.5 km • <span class="tag">Needs B-</span></p>
+                <small><i class="far fa-clock"></i> 3 hours ago</small>
+              </div>
+              <button class="btn-go" aria-label="navigate to Red Cross Camp"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- extra row (new item I added) to make the panel richer -->
+            <div class="location-item">
+              <div class="loc-info">
+                <h4><i class="fas fa-heart-circle-plus"></i> Max Hospital</h4>
+                <p><i class="fas fa-map-pin"></i> 1.2 km • <span class="tag">Urgent O+ / A-</span></p>
+                <small><i class="far fa-clock"></i> 10 min ago</small>
+              </div>
+              <button class="btn-go" aria-label="navigate to Max Hospital"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEW SECTION: upcoming donation & quick actions (enhancement) -->
+      <section class="quick-actions">
+        <div class="action-card reminder">
+          <div>
+            <i class="fas fa-calendar-check"></i>
+            <h4>Next eligible donation</h4>
+            <p><strong>May 28, 2025</strong> · 12 days left</p>
+          </div>
+          <button class="outline-btn">Remind me</button>
+        </div>
+        <div class="action-card leaderboard">
+          <div>
+            <i class="fas fa-ranking-star"></i>
+            <h4>You're ranked #23 this month</h4>
+            <p>50 points behind bronze badge</p>
+          </div>
+          <button class="outline-btn">View leaderboard</button>
+        </div>
+        <div class="action-card invite">
+          <div>
+            <i class="fas fa-user-plus"></i>
+            <h4>Refer a friend</h4>
+            <p>Get 50 life points per referral</p>
+          </div>
+          <button class="outline-btn"><i class="fas fa-share"></i> Invite</button>
+        </div>
+      </section>
+
+      <!-- subtle footer note (optional) -->
+      <div class="dashboard-footer">
+        <p><i class="far fa-bell"></i> You have 2 unread notifications from blood banks</p>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

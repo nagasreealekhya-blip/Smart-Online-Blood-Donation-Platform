@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow · Donor Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/donor list style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-droplet"></i>
+                <span>LifeFlow</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="donor list.html" class="active">Donor list</a>
+                <a href="register.html">Become a Donor</a>
+                <a href="search blood request.html">Blood Requests</a>
+                <a href="contact us.html">Contact</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1><i class="fas fa-users"></i> Donor Directory</h1>
+            <p>Find blood donors in your area. Filter by blood type, location, and availability.</p>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">1,248</span>
+                <span class="stat-label">Active Donors</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">156</span>
+                <span class="stat-label">Available Now</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Blood Types</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="directory-container">
+        <!-- Search and Filter Section -->
+        <div class="search-filters">
+            <div class="filters-header">
+                <h2><i class="fas fa-filter"></i> Find Donors</h2>
+                <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by name, location, or hospital...">
+            </div>
+
+            <!-- Filter Grid -->
+            <div class="filter-grid">
+                <!-- Blood Type Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-tint"></i> Blood Type</label>
+                    <div class="blood-type-grid" id="bloodTypeFilter">
+                        <button class="blood-type-btn active" data-type="all">All</button>
+                        <button class="blood-type-btn" data-type="A+">A+</button>
+                        <button class="blood-type-btn" data-type="A-">A-</button>
+                        <button class="blood-type-btn" data-type="B+">B+</button>
+                        <button class="blood-type-btn" data-type="B-">B-</button>
+                        <button class="blood-type-btn" data-type="O+">O+</button>
+                        <button class="blood-type-btn" data-type="O-">O-</button>
+                        <button class="blood-type-btn" data-type="AB+">AB+</button>
+                        <button class="blood-type-btn" data-type="AB-">AB-</button>
+                    </div>
+                </div>
+
+                <!-- Availability Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-clock"></i> Availability</label>
+                    <div class="availability-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="available" checked> Available Now
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="today"> Available Today
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="week"> This Week
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Distance Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Distance</label>
+                    <select id="distanceFilter" class="filter-select">
+                        <option value="any">Any distance</option>
+                        <option value="5">Within 5 km</option>
+                        <option value="10">Within 10 km</option>
+                        <option value="20">Within 20 km</option>
+                        <option value="50">Within 50 km</option>
+                    </select>
+                </div>
+
+                <!-- Last Donation Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-calendar"></i> Last Donation</label>
+                    <select id="donationFilter" class="filter-select">
+                        <option value="any">Any time</option>
+                        <option value="3">Last 3 months</option>
+                        <option value="6">Last 6 months</option>
+                        <option value="12">Last year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Active Filters -->
+            <div class="active-filters" id="activeFilters">
+                <span class="filter-tag">Available Now <i class="fas fa-times"></i></span>
+                <span class="filter-tag">Within 10 km <i class="fas fa-times"></i></span>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <!-- Results Header -->
+            <div class="results-header">
+                <h3><span id="resultsCount">24</span> Donors Found</h3>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="recent">Most Recent</option>
+                        <option value="distance">Nearest First</option>
+                        <option value="donations">Most Donations</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Donor Grid -->
+            <div class="donor-grid" id="donorGrid">
+                <!-- Donor Card 1 -->
+                <div class="donor-card available" data-blood="O+" data-distance="0.8" data-donations="12">
+                    <div class="donor-badge available">🟢 Available Now</div>
+                    <div class="donor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="donor-info">
+                        <h3>Johnathan Smith</h3>
+                        <div class="donor-details">
+                            <span class="blood-type">O+</span>
+                            <span class="age">32 years</span>
+                        </div>
+                        <div class="donor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>0.8 km away · Delhi</span>
+                        </div>
+                        <div class="donor-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>12 donations</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last: 3 months ago</span>
+                            </div>
+                        </div>
+                        <div class="donor-tags">
+                            <span class="tag">Available 24/7</span>
+                            <span class="tag">Verified</span>
+                        </div>
+                    </div>
+                    <div class="donor-actions">
+                        <button class="btn-contact" onclick="contactDonor(1)">
+                            <i class="fas fa-comment"></i> Contact
+                        </button>
+                        <button class="btn-view" onclick="viewDonor(1)">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donor Card 2 -->
+                <div class="donor-card" data-blood="B+" data-distance="1.2" data-donations="8">
+                    <div class="donor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="donor-info">
+                        <h3>Michael Chen</h3>
+                        <div class="donor-details">
+                            <span class="blood-type">B+</span>
+                            <span class="age">28 years</span>
+                        </div>
+                        <div class="donor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>1.2 km away · Mumbai</span>
+                        </div>
+                        <div class="donor-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>8 donations</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last: 2 months ago</span>
+                            </div>
+                        </div>
+                        <div class="donor-tags">
+                            <span class="tag">Available weekends</span>
+                            <span class="tag">Verified</span>
+                        </div>
+                    </div>
+                    <div class="donor-actions">
+                        <button class="btn-contact" onclick="contactDonor(2)">
+                            <i class="fas fa-comment"></i> Contact
+                        </button>
+                        <button class="btn-view" onclick="viewDonor(2)">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donor Card 3 -->
+                <div class="donor-card available" data-blood="A-" data-distance="2.3" data-donations="15">
+                    <div class="donor-badge available">🟢 Available Now</div>
+                    <div class="donor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="donor-info">
+                        <h3>Sarah Johnson</h3>
+                        <div class="donor-details">
+                            <span class="blood-type">A-</span>
+                            <span class="age">35 years</span>
+                        </div>
+                        <div class="donor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>2.3 km away · Bangalore</span>
+                        </div>
+                        <div class="donor-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>15 donations</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last: 1 month ago</span>
+                            </div>
+                        </div>
+                        <div class="donor-tags">
+                            <span class="tag">Plasma donor</span>
+                            <span class="tag">Verified</span>
+                        </div>
+                    </div>
+                    <div class="donor-actions">
+                        <button class="btn-contact" onclick="contactDonor(3)">
+                            <i class="fas fa-comment"></i> Contact
+                        </button>
+                        <button class="btn-view" onclick="viewDonor(3)">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donor Card 4 -->
+                <div class="donor-card" data-blood="AB+" data-distance="3.5" data-donations="5">
+                    <div class="donor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="donor-info">
+                        <h3>Emily Rodriguez</h3>
+                        <div class="donor-details">
+                            <span class="blood-type">AB+</span>
+                            <span class="age">26 years</span>
+                        </div>
+                        <div class="donor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>3.5 km away · Chennai</span>
+                        </div>
+                        <div class="donor-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>5 donations</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last: 2 weeks ago</span>
+                            </div>
+                        </div>
+                        <div class="donor-tags">
+                            <span class="tag">First time donor</span>
+                            <span class="tag">Verified</span>
+                        </div>
+                    </div>
+                    <div class="donor-actions">
+                        <button class="btn-contact" onclick="contactDonor(4)">
+                            <i class="fas fa-comment"></i> Contact
+                        </button>
+                        <button class="btn-view" onclick="viewDonor(4)">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donor Card 5 -->
+                <div class="donor-card available" data-blood="O-" data-distance="4.1" data-donations="20">
+                    <div class="donor-badge available">🟢 Available Now</div>
+                    <div class="donor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="donor-info">
+                        <h3>David Kim</h3>
+                        <div class="donor-details">
+                            <span class="blood-type">O-</span>
+                            <span class="age">42 years</span>
+                        </div>
+                        <div class="donor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>4.1 km away · Hyderabad</span>
+                        </div>
+                        <div class="donor-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>20 donations</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last: 3 weeks ago</span>
+                            </div>
+                        </div>
+                        <div class="donor-tags">
+                            <span class="tag">Universal donor</span>
+                            <span class="tag">Verified</span>
+                        </div>
+                    </div>
+                    <div class="donor-actions">
+                        <button class="btn-contact" onclick="contactDonor(5)">
+                            <i class="fas fa-comment"></i> Contact
+                        </button>
+                        <button class="btn-view" onclick="viewDonor(5)">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Donor Card 6 -->
+                <div class="donor-card" data-blood="B-" data-distance="5.2" data-donations="10">
+                    <div class="donor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="donor-info">
+                        <h3>Lisa Patel</h3>
+                        <div class="donor-details">
+                            <span class="blood-type">B-</span>
+                            <span class="age">31 years</span>
+                        </div>
+                        <div class="donor-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>5.2 km away · Pune</span>
+                        </div>
+                        <div class="donor-stats">
+                            <div class="stat">
+                                <i class="fas fa-heart"></i>
+                                <span>10 donations</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last: 4 months ago</span>
+                            </div>
+                        </div>
+                        <div class="donor-tags">
+                            <span class="tag">Platelet donor</span>
+                            <span class="tag">Verified</span>
+                        </div>
+                    </div>
+                    <div class="donor-actions">
+                        <button class="btn-contact" onclick="contactDonor(6)">
+                            <i class="fas fa-comment"></i> Contact
+                        </button>
+                        <button class="btn-view" onclick="viewDonor(6)">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+                <button class="page-btn next">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-droplet"></i> LifeFlow</h3>
+                <p>Connecting donors with those in need - saving lives through technology.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="donor list.html">Donor Directory</a></li>
+                    <li><a href="register.html">Become a Donor</a></li>
+                    <li><a href="search blood request.html">Blood Requests</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LifeFlow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Contact Donor</h3>
+                <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>You are about to contact this donor. Please provide your details:</p>
+                <form id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Your Phone Number" required>
+                    <textarea placeholder="Message (optional)"></textarea>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const donorModal = document.getElementById('contactModal');
+        const donorContactForm = document.getElementById('contactForm');
+
+        function contactDonor() {
+            donorModal.classList.add('active');
+        }
+
+        function viewDonor(id) {
+            alert(`Viewing donor profile #${id}. Connect this button to a detailed profile page when backend data is ready.`);
+        }
+
+        function closeModal() {
+            donorModal.classList.remove('active');
+        }
+
+        donorContactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Message prepared successfully. Connect this form to your backend or email service.');
+            donorContactForm.reset();
+            closeModal();
+        });
+    </script>
+</body>
+</html>

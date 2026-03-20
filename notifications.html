@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Notifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/notifications style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>LifeFlow</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#donate"><i class="fas fa-donate"></i> Donate / Find Donor</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="#notifications" class="active">
+                    <i class="fas fa-bell"></i> 
+                    Notifications
+                    <span class="notification-badge" id="notificationBadge">5</span>
+                </a>
+            </div>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <i class="fas fa-tint"></i>
+                <h2>LifeFlow</h2>
+                <button class="close-mobile" id="closeMobile">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-nav-links">
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#donate"><i class="fas fa-donate"></i> Donate / Find Donor</a>
+                <a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="#notifications" class="active"><i class="fas fa-bell"></i> Notifications</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <section class="banner" id="notifications">
+        <div class="banner-content">
+            <h1>Notifications</h1>
+            <p>Stay updated with important blood donation alerts and messages</p>
+        </div>
+        <div class="banner-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,120 C240,100 480,20 720,20 C960,20 1200,100 1440,80 L1440,120 L0,120 Z" fill="#fff5f5"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="notifications-wrapper">
+            <!-- Sidebar -->
+            <aside class="notifications-sidebar">
+                <div class="sidebar-header">
+                    <h3>Filters & Settings</h3>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Notification Type</h4>
+                    <div class="filter-group">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterAll" checked>
+                            <span>All Notifications</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterBlood" checked>
+                            <span><i class="fas fa-tint"></i> Blood Request</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterDonation" checked>
+                            <span><i class="fas fa-heartbeat"></i> Donation Update</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterAppointment" checked>
+                            <span><i class="fas fa-calendar"></i> Appointment</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterMessage" checked>
+                            <span><i class="fas fa-envelope"></i> Messages</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterAnnouncement" checked>
+                            <span><i class="fas fa-megaphone"></i> Announcement</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Status</h4>
+                    <div class="filter-group">
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterUnread" checked>
+                            <span>Unread Only</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" id="filterRead">
+                            <span>Read Only</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h4>Date Range</h4>
+                    <select id="dateFilter" class="filter-select">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="older">Older</option>
+                    </select>
+                </div>
+
+                <div class="sidebar-actions">
+                    <button class="btn btn-secondary btn-block" id="markAllRead">
+                        <i class="fas fa-check-double"></i> Mark All as Read
+                    </button>
+                    <button class="btn btn-danger btn-block" id="deleteAllNotifications">
+                        <i class="fas fa-trash"></i> Delete All
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Notifications Content -->
+            <div class="notifications-content">
+                <!-- Header with Actions -->
+                <div class="content-header">
+                    <div class="header-info">
+                        <h2>Your Notifications</h2>
+                        <p id="notificationCount">You have <span id="unreadCount">5</span> unread notifications</p>
+                    </div>
+                    <div class="header-actions">
+                        <input type="text" id="searchNotifications" class="search-box" placeholder="Search notifications...">
+                        <select id="sortNotifications" class="sort-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="unread">Unread First</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Notifications List -->
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Blood Request Notification -->
+                    <div class="notification-item unread blood-request" data-type="blood">
+                        <div class="notification-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h4>🩸 Urgent Blood Request</h4>
+                            <p>Blood Group O+ needed urgently at City Hospital. Your help can save a life!</p>
+                            <span class="notification-time">
+                                <i class="fas fa-clock"></i> 2 hours ago
+                            </span>
+                            <div class="notification-actions">
+                                <button class="btn btn-sm btn-primary" onclick="respondToRequest(this)">
+                                    <i class="fas fa-check"></i> Can Help
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="dismissNotification(this)">
+                                    <i class="fas fa-times"></i> Dismiss
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donation Update Notification -->
+                    <div class="notification-item unread donation-update" data-type="donation">
+                        <div class="notification-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h4>💪 Donation Eligible</h4>
+                            <p>You are now eligible to donate blood again. Your next donation can help save 3 lives!</p>
+                            <span class="notification-time">
+                                <i class="fas fa-clock"></i> Yesterday
+                            </span>
+                            <div class="notification-actions">
+                                <button class="btn btn-sm btn-primary" onclick="scheduleAppointment(this)">
+                                    <i class="fas fa-calendar"></i> Schedule
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="dismissNotification(this)">
+                                    <i class="fas fa-times"></i> Dismiss
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Appointment Notification -->
+                    <div class="notification-item read appointment" data-type="appointment">
+                        <div class="notification-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h4>📅 Appointment Reminder</h4>
+                            <p>Your blood donation appointment is scheduled for Dec 20, 2026 at 2:00 PM at City Blood Bank.</p>
+                            <span class="notification-time">
+                                <i class="fas fa-clock"></i> 3 days ago
+                            </span>
+                            <div class="notification-actions">
+                                <button class="btn btn-sm btn-secondary" onclick="dismissNotification(this)">
+                                    <i class="fas fa-times"></i> Dismiss
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Notification -->
+                    <div class="notification-item unread message" data-type="message">
+                        <div class="notification-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h4>✉️ New Message</h4>
+                            <p>You received a message from the Blood Bank: Thank you for your recent donation! Your contribution is truly appreciated.</p>
+                            <span class="notification-time">
+                                <i class="fas fa-clock"></i> 5 days ago
+                            </span>
+                            <div class="notification-actions">
+                                <button class="btn btn-sm btn-primary" onclick="viewMessage(this)">
+                                    <i class="fas fa-eye"></i> View Message
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="dismissNotification(this)">
+                                    <i class="fas fa-times"></i> Dismiss
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Announcement Notification -->
+                    <div class="notification-item read announcement" data-type="announcement">
+                        <div class="notification-icon">
+                            <i class="fas fa-megaphone"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h4>📢 New Feature Available</h4>
+                            <p>We've launched a new feature! You can now track your donation impact and see how many lives you've helped save.</p>
+                            <span class="notification-time">
+                                <i class="fas fa-clock"></i> 1 week ago
+                            </span>
+                            <div class="notification-actions">
+                                <button class="btn btn-sm btn-primary" onclick="exploreFeature(this)">
+                                    <i class="fas fa-external-link-alt"></i> Explore
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="dismissNotification(this)">
+                                    <i class="fas fa-times"></i> Dismiss
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Donation Confirmation -->
+                    <div class="notification-item read blood-request" data-type="blood">
+                        <div class="notification-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h4>✅ Donation Confirmed</h4>
+                            <p>Your blood donation of 450ml has been successfully received and processed. Thank you for saving lives!</p>
+                            <span class="notification-time">
+                                <i class="fas fa-clock"></i> 2 weeks ago
+                            </span>
+                            <div class="notification-actions">
+                                <button class="btn btn-sm btn-secondary" onclick="dismissNotification(this)">
+                                    <i class="fas fa-times"></i> Dismiss
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h3>No Notifications</h3>
+                    <p>You're all caught up! Check back later for new notifications.</p>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-section">
+                    <button class="btn btn-secondary" id="loadMoreBtn" style="display: none;">
+                        <i class="fas fa-arrow-down"></i> Load More Notifications
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 LifeFlow - Smart Online Blood Donation Platform. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Success!</h3>
+            <p id="successMessage">Action completed successfully.</p>
+            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-icon warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3 id="confirmTitle">Confirm Action</h3>
+            <p id="confirmMessage">Are you sure you want to perform this action?</p>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="confirmBtn" onclick="confirmAction()">
+                    <i class="fas fa-check"></i> Confirm
+                </button>
+                <button class="btn btn-secondary" onclick="closeConfirmModal()">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./notifications-script.js"></script>
+</body>
+</html>

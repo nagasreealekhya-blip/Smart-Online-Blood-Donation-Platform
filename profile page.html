@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Blood Donation Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>LifeFlow</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="profile page.html" class="active"><i class="fas fa-user"></i> Profile</a>
+                <a href="view request.html"><i class="fas fa-list"></i> View Requests <span class="notification-badge">5</span></a>
+                <a href="notifications.html"><i class="fas fa-bell"></i> Notifications <span class="notification-badge">3</span></a>
+                <a href="#" class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="user-type-selector">
+        <button class="type-btn admin" onclick="switchUserType('admin')">
+            <i class="fas fa-user-shield"></i> Admin Profile
+        </button>
+        <button class="type-btn donor active" onclick="switchUserType('donor')">
+            <i class="fas fa-user"></i> Donor Profile
+        </button>
+        <button class="type-btn patient" onclick="switchUserType('patient')">
+            <i class="fas fa-user-injured"></i> Patient Profile
+        </button>
+        <button class="type-btn hospital" onclick="switchUserType('hospital')">
+            <i class="fas fa-hospital"></i> Hospital Profile
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Admin Profile -->
+        <div id="admin-profile" class="profile-content" style="display: none;">
+            <div class="profile-header">
+                <div class="profile-header-content">
+                    <div class="profile-picture">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h1>System Administrator</h1>
+                        <div class="role">
+                            <i class="fas fa-shield-alt"></i> Platform Operations
+                        </div>
+                        <button class="edit-profile-btn" onclick="editProfile()">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-user-shield"></i>
+                    <h2>Administrator Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Full Name</div>
+                        <div class="info-value">LifeFlow Admin</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Role</div>
+                        <div class="info-value">System Administrator</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email Address</div>
+                        <div class="info-value">admin@lifeflow.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Phone Number</div>
+                        <div class="info-value">+91 1800-000-000</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Managed Donors</div>
+                        <div class="info-value">1,248</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Active Hospitals</div>
+                        <div class="info-value">45</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Admin Overview</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Pending Reviews</div>
+                        <div class="info-value">12</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Open Emergency Alerts</div>
+                        <div class="info-value">6</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Last Login</div>
+                        <div class="info-value">Today, 09:15 AM</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Security Status</div>
+                        <div class="info-value"><span class="status-badge status-available">Protected</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donor Profile -->
+        <div id="donor-profile" class="profile-content" style="display: block;">
+            <div class="profile-header">
+                <div class="profile-header-content">
+                    <div class="profile-picture">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h1>Rahul Kumar</h1>
+                        <div class="role">
+                            <i class="fas fa-tint"></i> Blood Donor
+                        </div>
+                        <button class="edit-profile-btn" onclick="editProfile()">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-user"></i>
+                    <h2>Personal Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-user"></i> Full Name</div>
+                        <div class="info-value">Rahul Kumar Singh</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-venus-mars"></i> Gender</div>
+                        <div class="info-value">Male</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-calendar"></i> Date of Birth / Age</div>
+                        <div class="info-value">15 March 1996 (28 years)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-tint"></i> Blood Group</div>
+                        <div class="info-value"><span class="blood-badge">B+</span></div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-phone"></i> Phone Number</div>
+                        <div class="info-value">+91 98765 43210</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-envelope"></i> Email Address</div>
+                        <div class="info-value">rahul.kumar@email.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-map-marker-alt"></i> Address / City</div>
+                        <div class="info-value">Hyderabad, Telangana - 500001</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-tint"></i>
+                    <h2>Donation Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Blood Group</div>
+                        <div class="info-value highlight">B+</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Last Donation Date</div>
+                        <div class="info-value">15 December 2024</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Total Donations</div>
+                        <div class="info-value">8 times</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Donation Eligibility</div>
+                        <div class="info-value">
+                            <span class="status-badge status-eligible">Eligible</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Availability Status</div>
+                        <div class="info-value">
+                            <span class="status-badge status-available">Available</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Next Eligible Date</div>
+                        <div class="info-value">15 February 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-notes-medical"></i>
+                    <h2>Medical Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Weight</div>
+                        <div class="info-value">75 kg</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Height</div>
+                        <div class="info-value">175 cm</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Health Status</div>
+                        <div class="info-value">Excellent</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Medical Conditions</div>
+                        <div class="info-value">None</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Current Medications</div>
+                        <div class="info-value">No medications</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Last Checkup</div>
+                        <div class="info-value">10 January 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-history"></i>
+                    <h2>Donation History</h2>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Patient Name</th>
+                                <th>Blood Group</th>
+                                <th>Hospital</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#REQ001</td>
+                                <td>John Smith</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">O-</span></td>
+                                <td>City General Hospital</td>
+                                <td>15 Dec 2024</td>
+                                <td><span class="request-status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ002</td>
+                                <td>Sarah Johnson</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">A+</span></td>
+                                <td>St. Mary's Hospital</td>
+                                <td>10 Dec 2024</td>
+                                <td><span class="request-status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ003</td>
+                                <td>Mike Wilson</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">B+</span></td>
+                                <td>Medical Center</td>
+                                <td>05 Jan 2025</td>
+                                <td><span class="request-status status-pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ004</td>
+                                <td>Emily Brown</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">AB+</span></td>
+                                <td>City General Hospital</td>
+                                <td>20 Dec 2024</td>
+                                <td><span class="request-status status-accepted">Accepted</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ005</td>
+                                <td>David Lee</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">O+</span></td>
+                                <td>Memorial Hospital</td>
+                                <td>28 Dec 2024</td>
+                                <td><span class="request-status status-completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Security Settings</h2>
+                </div>
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-key"></i> Change Password</h4>
+                        <p>Last changed 2 months ago • Recommended to change every 3 months</p>
+                    </div>
+                    <button class="security-btn change" onclick="openPasswordModal()">
+                        <i class="fas fa-edit"></i> Change
+                    </button>
+                </div>
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-envelope"></i> Update Email</h4>
+                        <p>Current: rahul.kumar@email.com</p>
+                    </div>
+                    <button class="security-btn change" onclick="openEmailModal()">
+                        <i class="fas fa-sync"></i> Update
+                    </button>
+                </div>
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-phone"></i> Update Phone</h4>
+                        <p>Current: +91 98765 43210</p>
+                    </div>
+                    <button class="security-btn change" onclick="openPhoneModal()">
+                        <i class="fas fa-sync"></i> Update
+                    </button>
+                </div>
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-mobile-alt"></i> Two-Factor Authentication</h4>
+                        <p>Add an extra layer of security to your account</p>
+                    </div>
+                    <button class="security-btn enable" onclick="enable2FA()">
+                        <i class="fas fa-check"></i> Enable
+                    </button>
+                </div>
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-id-card"></i> Account Verification</h4>
+                        <p>Verify your identity to increase credibility</p>
+                    </div>
+                    <button class="security-btn verify" onclick="verifyAccount()">
+                        <i class="fas fa-check-circle"></i> Verify Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-cog"></i>
+                    <h2>Profile Actions</h2>
+                </div>
+                <div class="profile-actions">
+                    <button class="action-btn edit" onclick="editProfile()">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                    <button class="action-btn save" onclick="saveChanges()">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    <button class="action-btn logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                    <button class="action-btn delete" onclick="deleteAccount()">
+                        <i class="fas fa-trash"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Profile -->
+        <div id="patient-profile" class="profile-content" style="display: none;">
+            <div class="profile-header">
+                <div class="profile-header-content">
+                    <div class="profile-picture">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h1>Priya Sharma</h1>
+                        <div class="role">
+                            <i class="fas fa-user-injured"></i> Patient
+                        </div>
+                        <button class="edit-profile-btn" onclick="editProfile()">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-user"></i>
+                    <h2>Personal Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Full Name</div>
+                        <div class="info-value">Priya Sharma</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Gender</div>
+                        <div class="info-value">Female</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Date of Birth / Age</div>
+                        <div class="info-value">10 August 1992 (32 years)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Blood Group</div>
+                        <div class="info-value"><span class="blood-badge">O-</span></div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Phone Number</div>
+                        <div class="info-value">+91 98765 12345</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email Address</div>
+                        <div class="info-value">priya.sharma@email.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Address / City</div>
+                        <div class="info-value">Mumbai, Maharashtra - 400001</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-notes-medical"></i>
+                    <h2>Medical Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Weight</div>
+                        <div class="info-value">65 kg</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Height</div>
+                        <div class="info-value">162 cm</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Health Status</div>
+                        <div class="info-value">Good</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Medical Conditions</div>
+                        <div class="info-value">None</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Blood Pressure</div>
+                        <div class="info-value">Normal</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-history"></i>
+                    <h2>Blood Request History</h2>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Blood Group</th>
+                                <th>Hospital</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#REQ101</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">O-</span></td>
+                                <td>City Hospital</td>
+                                <td>01 Dec 2024</td>
+                                <td><span class="request-status status-completed">Fulfilled</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ102</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">O-</span></td>
+                                <td>Medical Center</td>
+                                <td>10 Jan 2025</td>
+                                <td><span class="request-status status-pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ103</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">O-</span></td>
+                                <td>St. Mary's Hospital</td>
+                                <td>15 Dec 2024</td>
+                                <td><span class="request-status status-accepted">Accepted</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Security Settings</h2>
+                </div>
+                
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-key"></i> Change Password</h4>
+                        <p>Last changed 1 month ago</p>
+                    </div>
+                    <button class="security-btn change" onclick="openPasswordModal()">Change</button>
+                </div>
+                
+                <div class="security-item">
+                    <div class="security-info">
+                        <h4><i class="fas fa-envelope"></i> Update Email</h4>
+                        <p>Current: priya.sharma@email.com</p>
+                    </div>
+                    <button class="security-btn change" onclick="openEmailModal()">Update</button>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-cog"></i>
+                    <h2>Profile Actions</h2>
+                </div>
+                <div class="profile-actions">
+                    <button class="action-btn edit" onclick="editProfile()">Edit Profile</button>
+                    <button class="action-btn save" onclick="saveChanges()">Save Changes</button>
+                    <button class="action-btn logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hospital Profile -->
+        <div id="hospital-profile" class="profile-content" style="display: none;">
+            <div class="profile-header">
+                <div class="profile-header-content">
+                    <div class="profile-picture">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h1>City General Hospital</h1>
+                        <div class="role">
+                            <i class="fas fa-hospital"></i> Healthcare Provider
+                        </div>
+                        <button class="edit-profile-btn" onclick="editProfile()">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-hospital"></i>
+                    <h2>Hospital Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Hospital Name</div>
+                        <div class="info-value">City General Hospital</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Registration Number</div>
+                        <div class="info-value">HOSP/2024/00123</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Phone Number</div>
+                        <div class="info-value">+91 40 2345 6789</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Email Address</div>
+                        <div class="info-value">contact@cityhospital.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Address</div>
+                        <div class="info-value">Hyderabad, Telangana - 500001</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Emergency Contact</div>
+                        <div class="info-value">+91 98765 43210</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-tint"></i>
+                    <h2>Blood Stock Information</h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Total Blood Units</div>
+                        <div class="info-value">342 Units</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Last Stock Update</div>
+                        <div class="info-value">Today, 10:30 AM</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Emergency Requests</div>
+                        <div class="info-value">8 Active</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Registered Donors</div>
+                        <div class="info-value">156 Donors</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-history"></i>
+                    <h2>Recent Blood Requests</h2>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Patient</th>
+                                <th>Blood Group</th>
+                                <th>Units</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#REQ201</td>
+                                <td>John Smith</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">O-</span></td>
+                                <td>3</td>
+                                <td><span class="request-status status-pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#REQ202</td>
+                                <td>Sarah Johnson</td>
+                                <td><span class="blood-badge" style="font-size: 0.8rem;">A+</span></td>
+                                <td>2</td>
+                                <td><span class="request-status status-accepted">Accepted</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-key"></i> Change Password</h3>
+            <input type="password" id="currentPassword" placeholder="Current Password">
+            <input type="password" id="newPassword" placeholder="New Password">
+            <input type="password" id="confirmPassword" placeholder="Confirm New Password">
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeModal('passwordModal')">Cancel</button>
+                <button class="modal-btn confirm" onclick="changePassword()">Update Password</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="emailModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-envelope"></i> Update Email</h3>
+            <input type="email" id="newEmail" placeholder="New Email Address">
+            <input type="password" id="emailPassword" placeholder="Confirm Password">
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeModal('emailModal')">Cancel</button>
+                <button class="modal-btn confirm" onclick="updateEmail()">Update Email</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="phoneModal">
+        <div class="modal-content">
+            <h3><i class="fas fa-phone"></i> Update Phone</h3>
+            <input type="tel" id="newPhone" placeholder="New Phone Number">
+            <input type="password" id="phonePassword" placeholder="Confirm Password">
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeModal('phoneModal')">Cancel</button>
+                <button class="modal-btn confirm" onclick="updatePhone()">Update Phone</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Action completed successfully!</span>
+    </div>
+    <script>
+        const profileTypes = ['admin', 'donor', 'patient', 'hospital'];
+
+        function switchUserType(type) {
+            profileTypes.forEach((profileType) => {
+                const section = document.getElementById(`${profileType}-profile`);
+                if (section) {
+                    section.style.display = profileType === type ? 'block' : 'none';
+                }
+            });
+
+            document.querySelectorAll('.type-btn').forEach((button) => {
+                button.classList.toggle('active', button.getAttribute('onclick')?.includes(`'${type}'`));
+            });
+
+            const params = new URLSearchParams(window.location.search);
+            params.set('role', type);
+            history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function editProfile() {
+            const role = new URLSearchParams(window.location.search).get('role') || 'donor';
+            window.location.href = `edit profile.html?role=${role}`;
+        }
+
+        function openPasswordModal() {
+            document.getElementById('passwordModal').style.display = 'flex';
+        }
+
+        function openEmailModal() {
+            document.getElementById('emailModal').style.display = 'flex';
+        }
+
+        function openPhoneModal() {
+            document.getElementById('phoneModal').style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2400);
+        }
+
+        function changePassword() {
+            closeModal('passwordModal');
+            showToast('Password updated successfully.');
+        }
+
+        function updateEmail() {
+            closeModal('emailModal');
+            showToast('Email updated successfully.');
+        }
+
+        function updatePhone() {
+            closeModal('phoneModal');
+            showToast('Phone number updated successfully.');
+        }
+
+        function saveChanges() {
+            showToast('Profile changes saved.');
+        }
+
+        function logout() {
+            window.location.href = 'login.html';
+        }
+
+        const initialRole = new URLSearchParams(window.location.search).get('role') || 'donor';
+        switchUserType(profileTypes.includes(initialRole) ? initialRole : 'donor');
+    </script>
+</body>
+</html>

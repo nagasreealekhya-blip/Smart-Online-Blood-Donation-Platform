@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Edit Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/edit profile style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <h1>LifeFlow</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="donor list.html"><i class="fas fa-donate"></i> Donate / Find Donor</a>
+                <a href="contact us.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="profile page.html" class="active"><i class="fas fa-user"></i> Profile</a>
+            </div>
+            <button class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <i class="fas fa-tint"></i>
+                <h2>LifeFlow</h2>
+                <button class="close-mobile" id="closeMobile">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="donor list.html"><i class="fas fa-donate"></i> Donate / Find Donor</a>
+                <a href="contact us.html"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="profile page.html" class="active"><i class="fas fa-user"></i> Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <section class="banner" id="profile">
+        <div class="banner-content">
+            <h1>Edit Profile</h1>
+            <p>Update your personal information and manage your account settings</p>
+        </div>
+        <div class="banner-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,120 C240,100 480,20 720,20 C960,20 1200,100 1440,80 L1440,120 L0,120 Z" fill="#fff5f5"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="profile-container">
+            <!-- Sidebar Navigation -->
+            <aside class="profile-sidebar">
+                <div class="profile-avatar-section">
+                    <div class="avatar-container">
+                        <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-avatar">
+                        <label for="avatarUpload" class="avatar-upload-btn">
+                            <i class="fas fa-camera"></i>
+                        </label>
+                        <input type="file" id="avatarUpload" accept="image/*" hidden>
+                    </div>
+                    <h3 id="profileName">John Doe</h3>
+                    <p id="profileEmail" class="profile-email">john@example.com</p>
+                </div>
+
+                <nav class="profile-nav">
+                    <a href="#" class="nav-item active" data-tab="personal">
+                        <i class="fas fa-user"></i>
+                        <span>Personal Info</span>
+                    </a>
+                    <a href="#" class="nav-item" data-tab="blood">
+                        <i class="fas fa-tint"></i>
+                        <span>Blood Info</span>
+                    </a>
+                    <a href="#" class="nav-item" data-tab="contact">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact Details</span>
+                    </a>
+                    <a href="#" class="nav-item" data-tab="address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Address</span>
+                    </a>
+                    <a href="#" class="nav-item" data-tab="medical">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Medical History</span>
+                    </a>
+                    <a href="#" class="nav-item" data-tab="password">
+                        <i class="fas fa-lock"></i>
+                        <span>Change Password</span>
+                    </a>
+                </nav>
+
+                <div class="profile-actions">
+                    <button class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <!-- Personal Info Tab -->
+                <div class="tab-content active" id="personal-tab">
+                    <div class="content-header">
+                        <h2>Personal Information</h2>
+                        <p>Update your basic personal details</p>
+                    </div>
+
+                    <form id="personalForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span>*</span></label>
+                                <input type="text" id="firstName" name="firstName" value="John" required>
+                                <span class="error-message" id="firstNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span>*</span></label>
+                                <input type="text" id="lastName" name="lastName" value="Doe" required>
+                                <span class="error-message" id="lastNameError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth <span>*</span></label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" value="1990-05-15" required>
+                                <span class="error-message" id="dobError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender <span>*</span></label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="occupation">Occupation</label>
+                            <input type="text" id="occupation" name="occupation" value="Software Engineer">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" name="bio" placeholder="Tell us about yourself" rows="4">Passionate blood donor and community volunteer</textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Blood Info Tab -->
+                <div class="tab-content" id="blood-tab">
+                    <div class="content-header">
+                        <h2>Blood Information</h2>
+                        <p>Update your blood donation details</p>
+                    </div>
+
+                    <form id="bloodForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bloodGroup">Blood Group <span>*</span></label>
+                                <select id="bloodGroup" name="bloodGroup" required>
+                                    <option value="">Select Blood Group</option>
+                                    <option value="O+" selected>O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donationStatus">Donation Status <span>*</span></label>
+                                <select id="donationStatus" name="donationStatus" required>
+                                    <option value="">Select Status</option>
+                                    <option value="active" selected>Active Donor</option>
+                                    <option value="inactive">Inactive Donor</option>
+                                    <option value="willing">Willing to Donate</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="lastDonationDate">Last Donation Date</label>
+                                <input type="date" id="lastDonationDate" name="lastDonationDate" value="2026-01-15">
+                            </div>
+                            <div class="form-group">
+                                <label for="totalDonations">Total Donations</label>
+                                <input type="number" id="totalDonations" name="totalDonations" value="5" min="0" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="healthConditions">Health Conditions</label>
+                            <textarea id="healthConditions" name="healthConditions" placeholder="Any medical conditions we should know about?" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Details Tab -->
+                <div class="tab-content" id="contact-tab">
+                    <div class="content-header">
+                        <h2>Contact Details</h2>
+                        <p>Update your contact information</p>
+                    </div>
+
+                    <form id="contactForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="email">Email Address <span>*</span></label>
+                            <input type="email" id="email" name="email" value="john@example.com" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number <span>*</span></label>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" value="+91 9876543210" required>
+                                <span class="error-message" id="phoneError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="alternatePhone">Alternate Phone</label>
+                                <input type="tel" id="alternatePhone" name="alternatePhone" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Address Tab -->
+                <div class="tab-content" id="address-tab">
+                    <div class="content-header">
+                        <h2>Address Information</h2>
+                        <p>Update your residential address</p>
+                    </div>
+
+                    <form id="addressForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="streetAddress">Street Address <span>*</span></label>
+                            <input type="text" id="streetAddress" name="streetAddress" value="123 Main Street" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City <span>*</span></label>
+                                <input type="text" id="city" name="city" value="New Delhi" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State <span>*</span></label>
+                                <input type="text" id="state" name="state" value="Delhi" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="postalCode">Postal Code <span>*</span></label>
+                                <input type="text" id="postalCode" name="postalCode" value="110001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country <span>*</span></label>
+                                <input type="text" id="country" name="country" value="India" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Medical History Tab -->
+                <div class="tab-content" id="medical-tab">
+                    <div class="content-header">
+                        <h2>Medical History</h2>
+                        <p>Update your medical information (kept confidential)</p>
+                    </div>
+
+                    <form id="medicalForm" class="profile-form">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="diabetes" id="diabetes">
+                                <span>Diabetes</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="hypertension" id="hypertension">
+                                <span>High Blood Pressure</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="heartDisease" id="heartDisease">
+                                <span>Heart Disease</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="bloodTransfusion" id="bloodTransfusion">
+                                <span>Previous Blood Transfusion</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="medications" id="medications">
+                                <span>Currently on Medications</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medicationDetails">Current Medications</label>
+                            <textarea id="medicationDetails" name="medicationDetails" placeholder="List any medications you're currently taking" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Password Tab -->
+                <div class="tab-content" id="password-tab">
+                    <div class="content-header">
+                        <h2>Change Password</h2>
+                        <p>Update your login password</p>
+                    </div>
+
+                    <form id="passwordForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password <span>*</span></label>
+                            <div class="password-input">
+                                <input type="password" id="currentPassword" name="currentPassword" required>
+                                <button type="button" class="toggle-password" data-target="currentPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="currentPasswordError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password <span>*</span></label>
+                            <div class="password-input">
+                                <input type="password" id="newPassword" name="newPassword" required>
+                                <button type="button" class="toggle-password" data-target="newPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="newPasswordError"></span>
+                            <div class="password-strength" id="passwordStrength"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password <span>*</span></label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <button type="button" class="toggle-password" data-target="confirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="confirmPasswordError"></span>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-lock"></i> Change Password
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Success!</h3>
+            <p id="successMessage">Your profile has been updated successfully.</p>
+            <button class="modal-close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal" id="errorModal">
+        <div class="modal-content error">
+            <div class="modal-icon error">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3>Error</h3>
+            <p id="errorMessage">An error occurred. Please try again.</p>
+            <button class="modal-close-btn" onclick="closeErrorModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 LifeFlow - Smart Online Blood Donation Platform. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./edit-profile-script.js"></script>
+</body>
+</html>

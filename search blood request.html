@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow · Search Blood Requests</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/search blood request style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-droplet"></i>
+                <span>LifeFlow</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="donor dashboard.html">Donors</a>
+                <a href="patient dashboard.html">Patients</a>
+                <a href="hospital dashboard .html">Hospitals</a>
+                <a href="search blood request.html" class="active">Blood Requests</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1><i class="fas fa-hand-holding-heart"></i> Search Blood Requests</h1>
+            <p>Find blood requests near you and help save lives. Filter by blood type, urgency, and location.</p>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">67</span>
+                <span class="stat-label">Active Requests</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">23</span>
+                <span class="stat-label">Emergency</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Near You</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Search Section -->
+    <main class="search-container">
+        <!-- Search Filters -->
+        <div class="search-filters">
+            <div class="filters-header">
+                <h2><i class="fas fa-filter"></i> Search Filters</h2>
+                <button class="clear-filters" id="clearFilters">Clear All</button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by hospital, location, or patient...">
+            </div>
+
+            <!-- Filter Grid -->
+            <div class="filter-grid">
+                <!-- Blood Type Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-tint"></i> Blood Type</label>
+                    <div class="blood-type-grid" id="bloodTypeFilter">
+                        <button class="blood-type-btn active" data-type="all">All</button>
+                        <button class="blood-type-btn" data-type="A+">A+</button>
+                        <button class="blood-type-btn" data-type="A-">A-</button>
+                        <button class="blood-type-btn" data-type="B+">B+</button>
+                        <button class="blood-type-btn" data-type="B-">B-</button>
+                        <button class="blood-type-btn" data-type="O+">O+</button>
+                        <button class="blood-type-btn" data-type="O-">O-</button>
+                        <button class="blood-type-btn" data-type="AB+">AB+</button>
+                        <button class="blood-type-btn" data-type="AB-">AB-</button>
+                    </div>
+                </div>
+
+                <!-- Urgency Level Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-exclamation-triangle"></i> Urgency Level</label>
+                    <div class="urgency-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="emergency" checked> Emergency
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="urgent" checked> Urgent
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="normal" checked> Normal
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Distance Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-map-marker-alt"></i> Distance</label>
+                    <select id="distanceFilter" class="filter-select">
+                        <option value="any">Any distance</option>
+                        <option value="2">Within 2 km</option>
+                        <option value="5">Within 5 km</option>
+                        <option value="10">Within 10 km</option>
+                        <option value="20">Within 20 km</option>
+                        <option value="50">Within 50 km</option>
+                    </select>
+                </div>
+
+                <!-- Date Range Filter -->
+                <div class="filter-group">
+                    <label><i class="fas fa-clock"></i> Time Range</label>
+                    <select id="timeFilter" class="filter-select">
+                        <option value="any">Any time</option>
+                        <option value="1">Last hour</option>
+                        <option value="6">Last 6 hours</option>
+                        <option value="24">Last 24 hours</option>
+                        <option value="week">Last week</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Active Filters -->
+            <div class="active-filters" id="activeFilters">
+                <span class="filter-tag">Emergency <i class="fas fa-times"></i></span>
+                <span class="filter-tag">Urgent <i class="fas fa-times"></i></span>
+                <span class="filter-tag">Within 5 km <i class="fas fa-times"></i></span>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <!-- Results Header -->
+            <div class="results-header">
+                <h3><span id="resultsCount">24</span> Blood Requests Found</h3>
+                <div class="sort-options">
+                    <label>Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="newest">Newest first</option>
+                        <option value="oldest">Oldest first</option>
+                        <option value="distance">Nearest first</option>
+                        <option value="urgency">Most urgent</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="results-grid" id="resultsGrid">
+                <!-- Emergency Request 1 -->
+                <div class="request-card emergency" data-blood="O+" data-urgency="emergency" data-distance="0.8" data-time="15">
+                    <div class="request-badge emergency">🚨 EMERGENCY</div>
+                    <div class="request-header">
+                        <div class="blood-type large">O+</div>
+                        <div class="request-meta">
+                            <span class="hospital"><i class="fas fa-hospital"></i> Apollo Hospital</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 0.8 km away</span>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>2 units needed</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>15 minutes ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <span>Patient: Emergency Room</span>
+                        </div>
+                    </div>
+                    <div class="request-footer">
+                        <div class="urgency-level urgent">
+                            <span class="pulse"></span> Urgent
+                        </div>
+                        <button class="btn-respond" onclick="respondToRequest(1)">Respond Now</button>
+                    </div>
+                </div>
+
+                <!-- Request 2 -->
+                <div class="request-card" data-blood="B+" data-urgency="urgent" data-distance="1.2" data-time="45">
+                    <div class="request-header">
+                        <div class="blood-type">B+</div>
+                        <div class="request-meta">
+                            <span class="hospital"><i class="fas fa-hospital"></i> City Children's Hospital</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 1.2 km away</span>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>1 unit needed</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>45 minutes ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <span>Patient: Pediatric Ward</span>
+                        </div>
+                    </div>
+                    <div class="request-footer">
+                        <div class="urgency-level urgent">
+                            <span class="pulse"></span> Urgent
+                        </div>
+                        <button class="btn-respond" onclick="respondToRequest(2)">Respond Now</button>
+                    </div>
+                </div>
+
+                <!-- Request 3 -->
+                <div class="request-card match" data-blood="B-" data-urgency="normal" data-distance="2.5" data-time="180">
+                    <div class="request-badge match">✓ MATCHES YOUR TYPE</div>
+                    <div class="request-header">
+                        <div class="blood-type">B-</div>
+                        <div class="request-meta">
+                            <span class="hospital"><i class="fas fa-hospital"></i> Red Cross Blood Bank</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 2.5 km away</span>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>3 units needed</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>3 hours ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <span>Patient: Multiple</span>
+                        </div>
+                    </div>
+                    <div class="request-footer">
+                        <div class="urgency-level normal">
+                            Normal
+                        </div>
+                        <button class="btn-respond" onclick="respondToRequest(3)">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Request 4 - Emergency -->
+                <div class="request-card emergency" data-blood="AB+" data-urgency="emergency" data-distance="3.1" data-time="25">
+                    <div class="request-badge emergency">🚨 EMERGENCY</div>
+                    <div class="request-header">
+                        <div class="blood-type">AB+</div>
+                        <div class="request-meta">
+                            <span class="hospital"><i class="fas fa-hospital"></i> Memorial Hospital</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 3.1 km away</span>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>2 units needed</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>25 minutes ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <span>Patient: Surgery</span>
+                        </div>
+                    </div>
+                    <div class="request-footer">
+                        <div class="urgency-level urgent">
+                            <span class="pulse"></span> Urgent
+                        </div>
+                        <button class="btn-respond" onclick="respondToRequest(4)">Respond Now</button>
+                    </div>
+                </div>
+
+                <!-- Request 5 -->
+                <div class="request-card" data-blood="A+" data-urgency="normal" data-distance="4.2" data-time="300">
+                    <div class="request-header">
+                        <div class="blood-type">A+</div>
+                        <div class="request-meta">
+                            <span class="hospital"><i class="fas fa-hospital"></i> St. Mary's Medical</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 4.2 km away</span>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>1 unit needed</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>5 hours ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <span>Patient: ICU</span>
+                        </div>
+                    </div>
+                    <div class="request-footer">
+                        <div class="urgency-level normal">
+                            Normal
+                        </div>
+                        <button class="btn-respond" onclick="respondToRequest(5)">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Request 6 - Match -->
+                <div class="request-card match" data-blood="O+" data-urgency="normal" data-distance="5.0" data-time="1440">
+                    <div class="request-badge match">✓ MATCHES YOUR TYPE</div>
+                    <div class="request-header">
+                        <div class="blood-type">O+</div>
+                        <div class="request-meta">
+                            <span class="hospital"><i class="fas fa-hospital"></i> Community Blood Center</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 5.0 km away</span>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>2 units needed</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>1 day ago</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <span>Patient: General</span>
+                        </div>
+                    </div>
+                    <div class="request-footer">
+                        <div class="urgency-level normal">
+                            Normal
+                        </div>
+                        <button class="btn-respond" onclick="respondToRequest(6)">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more">
+                <button class="btn-load-more" id="loadMore">
+                    <i class="fas fa-sync-alt"></i> Load More Requests
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quick Stats Section -->
+    <section class="stats-section">
+        <h2>Blood Request Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-tint"></i>
+                <div class="stat-info">
+                    <span class="stat-value">O+</span>
+                    <span class="stat-label">Most Needed</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-clock"></i>
+                <div class="stat-info">
+                    <span class="stat-value">15 min</span>
+                    <span class="stat-label">Avg Response</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-info">
+                    <span class="stat-value">89%</span>
+                    <span class="stat-label">Fulfilled</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <div class="stat-info">
+                    <span class="stat-value">156</span>
+                    <span class="stat-label">Active Donors</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Need Help Section -->
+    <section class="help-section">
+        <div class="help-content">
+            <h2>Need Blood Urgently?</h2>
+            <p>If you have an emergency blood requirement, click below for immediate assistance.</p>
+            <button class="emergency-btn" onclick="window.location.href='patient dashboard.html'">
+                <i class="fas fa-exclamation-triangle"></i>
+                Create Emergency Request
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-droplet"></i> LifeFlow</h3>
+                <p>Connecting donors with those in need - saving lives through technology.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="donor dashboard.html">Donors</a></li>
+                    <li><a href="patient dashboard.html">Patients</a></li>
+                    <li><a href="hospital dashboard .html">Hospitals</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LifeFlow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Response Modal -->
+    <div class="modal" id="responseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Respond to Blood Request</h3>
+                <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>You are about to respond to a blood request. The hospital will be notified and will contact you shortly.</p>
+                <div class="modal-actions">
+                    <button class="btn-confirm" onclick="confirmResponse()">Confirm Response</button>
+                    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const responseModal = document.getElementById('responseModal');
+
+        function respondToRequest(id) {
+            responseModal.dataset.requestId = id;
+            responseModal.classList.add('active');
+        }
+
+        function closeModal() {
+            responseModal.classList.remove('active');
+        }
+
+        function confirmResponse() {
+            const requestId = responseModal.dataset.requestId || 'selected';
+            alert(`Response recorded for request #${requestId}. Connect this action to your backend workflow.`);
+            closeModal();
+        }
+
+        document.getElementById('loadMore').addEventListener('click', () => {
+            alert('Additional requests can be loaded here when connected to real data.');
+        });
+    </script>
+</body>
+</html>

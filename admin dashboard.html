@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow · Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin dashboard style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-tint" style="margin-right: 10px;"></i>LifeFlow</h2>
+                <p>Admin Dashboard</p>
+            </div>
+            <div class="admin-badge">
+                <i class="fas fa-user-shield"></i>
+                <div>
+                    <p class="admin-name">Admin </p>
+                    <p class="admin-role">System Administrator</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-page="donors">
+                        <i class="fas fa-users"></i>
+                        <span>Manage Donors</span>
+                        <span class="badge">1,248</span>
+                    </li>
+                    <li class="nav-item" data-page="patients">
+                        <i class="fas fa-user-injured"></i>
+                        <span>Manage Patients</span>
+                        <span class="badge">892</span>
+                    </li>
+                    <li class="nav-item" data-page="hospitals">
+                        <i class="fas fa-hospital"></i>
+                        <span>Manage Hospitals</span>
+                        <span class="badge">45</span>
+                    </li>
+                    <li class="nav-item" data-page="requests">
+                        <i class="fas fa-tint"></i>
+                        <span>Blood Requests</span>
+                        <span class="badge emergency-badge">67</span>
+                    </li>
+                    <li class="nav-item" data-page="statistics">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>System Statistics</span>
+                    </li>
+                    <li class="nav-item" data-page="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span>Send Notifications</span>
+                        <span class="badge">3</span>
+                    </li>
+                    <li class="nav-item" data-page="audit">
+                        <i class="fas fa-history"></i>
+                        <span>System Audit Log</span>
+                        <span class="badge">New</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="nav-item logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ========== MAIN CONTENT ========== -->
+        <main class="main-content" id="mainContent">
+            <!-- Dashboard Page -->
+            <div id="dashboard" class="page active-page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>Dashboard Overview</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Global Stats Overview -->
+                <div class="global-stats">
+                    <h2 class="section-title"><i class="fas fa-globe"></i> Global Statistics Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Donors</h3>
+                                <div class="number">1,248</div>
+                                <div class="stat-trend positive"><i class="fas fa-arrow-up"></i> +12% this month</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Patients</h3>
+                                <div class="number">892</div>
+                                <div class="stat-trend positive"><i class="fas fa-arrow-up"></i> +8% this month</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-user-injured"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Hospitals</h3>
+                                <div class="number">45</div>
+                                <div class="stat-trend neutral"><i class="fas fa-minus"></i> +2 new</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Blood Requests</h3>
+                                <div class="number">67</div>
+                                <div class="stat-trend negative"><i class="fas fa-arrow-up"></i> +23% urgent</div>
+                            </div>
+                            <div class="stat-icon emergency">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Units Donated</h3>
+                                <div class="number">3,456</div>
+                                <div class="stat-trend positive"><i class="fas fa-arrow-up"></i> +156 this week</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Lives Saved</h3>
+                                <div class="number">2,890</div>
+                                <div class="stat-trend positive"><i class="fas fa-arrow-up"></i> +45 this week</div>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="btn-primary"><i class="fas fa-plus"></i> Add New Donor</button>
+                    <button class="btn-primary"><i class="fas fa-hospital"></i> Register Hospital</button>
+                    <button class="btn-primary"><i class="fas fa-bell"></i> Send Notification</button>
+                    <button class="btn-emergency"><i class="fas fa-exclamation-triangle"></i> Emergency Broadcast</button>
+                </div>
+
+                <!-- Recent Donors Table -->
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Recent Donors</h2>
+                    <button class="btn-primary view-all">View All <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Blood Type</th>
+                                <th>Location</th>
+                                <th>Last Donation</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#D-1001</td>
+                                <td>Johnathan Smith</td>
+                                <td><span class="blood-badge">O+</span></td>
+                                <td>Delhi</td>
+                                <td>15 Mar 2026</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#D-1002</td>
+                                <td>Sarah Johnson</td>
+                                <td><span class="blood-badge">B+</span></td>
+                                <td>Mumbai</td>
+                                <td>10 Mar 2026</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#D-1003</td>
+                                <td>Michael Chen</td>
+                                <td><span class="blood-badge">A-</span></td>
+                                <td>Bangalore</td>
+                                <td>5 Mar 2026</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recent Hospitals Table -->
+                <div class="section-header" style="margin-top: 30px;">
+                    <h2><i class="fas fa-hospital"></i> Recent Hospitals</h2>
+                    <button class="btn-primary view-all">View All <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Hospital Name</th>
+                                <th>Location</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th>Blood Units</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#H-101</td>
+                                <td>Apollo Hospital</td>
+                                <td>Delhi</td>
+                                <td>+91 11 1234 5678</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td><span class="stock-level low">45 units</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#H-102</td>
+                                <td>City General Hospital</td>
+                                <td>Mumbai</td>
+                                <td>+91 22 8765 4321</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td><span class="stock-level critical">12 units</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- System Audit Log -->
+                <div class="section-header" style="margin-top: 30px;">
+                    <h2><i class="fas fa-history"></i> System Audit Log</h2>
+                    <button class="btn-primary view-all">Export Log <i class="fas fa-download"></i></button>
+                </div>
+                <div class="audit-log-container">
+                    <div class="audit-filters">
+                        <select class="filter-select">
+                            <option>All Events</option>
+                            <option>User Actions</option>
+                            <option>System Events</option>
+                            <option>Security Alerts</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>Last 24 hours</option>
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Custom range</option>
+                        </select>
+                        <input type="text" placeholder="Search logs..." class="search-input">
+                    </div>
+                    <div class="audit-log-list">
+                        <div class="audit-log-item">
+                            <div class="audit-icon warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Emergency blood request #R-2034</span>
+                                    <span class="audit-time">2 minutes ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-hospital"></i> Apollo Hospital</span>
+                                    <span class="audit-type">Blood Type: O+ (2 units)</span>
+                                </div>
+                            </div>
+                            <span class="audit-status urgent">URGENT</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon success">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">New donor registered</span>
+                                    <span class="audit-time">15 minutes ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-user"></i> Emily Rodriguez</span>
+                                    <span class="audit-type">Blood Type: B+ · Location: Delhi</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">COMPLETED</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon info">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Hospital verified</span>
+                                    <span class="audit-time">1 hour ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-hospital"></i> St. Mary's Medical</span>
+                                    <span class="audit-type">Location: Bangalore · 5 new requests</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">VERIFIED</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Blood stock critical</span>
+                                    <span class="audit-time">2 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-hospital"></i> City General</span>
+                                    <span class="audit-type">O-: 2 units, AB-: 1 unit</span>
+                                </div>
+                            </div>
+                            <span class="audit-status urgent">CRITICAL</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Blood request fulfilled</span>
+                                    <span class="audit-time">3 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-tint"></i> Request #R-2012</span>
+                                    <span class="audit-type">Donor: Michael Chen · 450ml</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">FULFILLED</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon warning">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Security alert: Multiple login attempts</span>
+                                    <span class="audit-time">5 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-user"></i> IP: 192.168.1.45</span>
+                                    <span class="audit-type">3 failed attempts</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">INVESTIGATING</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Donors Page -->
+            <div id="donors" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>Manage Donors</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Total Donors</h3>
+                            <div class="number">1,248</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Active Donors</h3>
+                            <div class="number">892</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>New This Month</h3>
+                            <div class="number">124</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Units Donated</h3>
+                            <div class="number">3,456</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> All Donors</h2>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-primary"><i class="fas fa-download"></i> Export</button>
+                        <button class="btn-primary"><i class="fas fa-plus"></i> Add Donor</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Blood Type</th>
+                                <th>Location</th>
+                                <th>Phone</th>
+                                <th>Last Donation</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#D-1001</td>
+                                <td>Johnathan Smith</td>
+                                <td><span class="blood-badge">O+</span></td>
+                                <td>Delhi</td>
+                                <td>+91 98765 4321</td>
+                                <td>15 Mar 2026</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#D-1002</td>
+                                <td>Sarah Johnson</td>
+                                <td><span class="blood-badge">B+</span></td>
+                                <td>Mumbai</td>
+                                <td>+91 87654 3210</td>
+                                <td>10 Mar 2026</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#D-1003</td>
+                                <td>Michael Chen</td>
+                                <td><span class="blood-badge">A-</span></td>
+                                <td>Bangalore</td>
+                                <td>+91 76543 2109</td>
+                                <td>5 Mar 2026</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#D-1004</td>
+                                <td>Emily Rodriguez</td>
+                                <td><span class="blood-badge">O-</span></td>
+                                <td>Chennai</td>
+                                <td>+91 65432 1098</td>
+                                <td>1 Mar 2026</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-edit"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-ban"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Manage Hospitals Page -->
+            <div id="hospitals" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>Manage Hospitals</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Total Hospitals</h3>
+                            <div class="number">45</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Verified</h3>
+                            <div class="number">42</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Pending</h3>
+                            <div class="number">3</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Critical Stock</h3>
+                            <div class="number">8</div>
+                        </div>
+                        <div class="stat-icon emergency">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h2><i class="fas fa-hospital"></i> All Hospitals</h2>
+                    <button class="btn-primary"><i class="fas fa-plus"></i> Register Hospital</button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Hospital Name</th>
+                                <th>Location</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Blood Units</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#H-101</td>
+                                <td>Apollo Hospital</td>
+                                <td>Delhi</td>
+                                <td>+91 11 1234 5678</td>
+                                <td>contact@apollo.com</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td><span class="stock-level low">45 units</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#H-102</td>
+                                <td>City General Hospital</td>
+                                <td>Mumbai</td>
+                                <td>+91 22 8765 4321</td>
+                                <td>info@citygeneral.com</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td><span class="stock-level critical">12 units</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#H-103</td>
+                                <td>St. Mary's Medical</td>
+                                <td>Bangalore</td>
+                                <td>+91 80 2345 6789</td>
+                                <td>contact@stmarys.com</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td><span class="stock-level normal">78 units</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-check"></i></button>
+                                        <button class="btn-icon btn-reject"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#H-104</td>
+                                <td>Memorial Hospital</td>
+                                <td>Chennai</td>
+                                <td>+91 44 3456 7890</td>
+                                <td>info@memorial.com</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                                <td><span class="stock-level low">34 units</span></td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                        <button class="btn-icon btn-approve"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- System Audit Log Page -->
+            <div id="audit" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>System Audit Log</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="audit-header-stats">
+                    <div class="audit-stat">
+                        <span class="audit-stat-label">Total Events</span>
+                        <span class="audit-stat-value">1,248</span>
+                    </div>
+                    <div class="audit-stat">
+                        <span class="audit-stat-label">Last 24h</span>
+                        <span class="audit-stat-value">156</span>
+                    </div>
+                    <div class="audit-stat">
+                        <span class="audit-stat-label">Urgent Alerts</span>
+                        <span class="audit-stat-value urgent">8</span>
+                    </div>
+                    <div class="audit-stat">
+                        <span class="audit-stat-label">System Health</span>
+                        <span class="audit-stat-value success">98%</span>
+                    </div>
+                </div>
+
+                <div class="audit-log-container">
+                    <div class="audit-filters">
+                        <select class="filter-select">
+                            <option>All Events</option>
+                            <option>User Actions</option>
+                            <option>System Events</option>
+                            <option>Security Alerts</option>
+                            <option>Blood Requests</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>Last 24 hours</option>
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Custom range</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>All Severities</option>
+                            <option>Urgent</option>
+                            <option>Warning</option>
+                            <option>Info</option>
+                        </select>
+                        <input type="text" placeholder="Search logs..." class="search-input">
+                        <button class="btn-primary"><i class="fas fa-download"></i> Export</button>
+                    </div>
+
+                    <div class="audit-log-list">
+                        <div class="audit-log-item">
+                            <div class="audit-icon warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Emergency blood request #R-2034</span>
+                                    <span class="audit-time">2 minutes ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-hospital"></i> Apollo Hospital</span>
+                                    <span class="audit-type">Blood Type: O+ (2 units)</span>
+                                </div>
+                            </div>
+                            <span class="audit-status urgent">URGENT</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon success">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">New donor registered</span>
+                                    <span class="audit-time">15 minutes ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-user"></i> Emily Rodriguez</span>
+                                    <span class="audit-type">Blood Type: B+ · Location: Delhi</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">COMPLETED</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon info">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Hospital verified</span>
+                                    <span class="audit-time">1 hour ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-hospital"></i> St. Mary's Medical</span>
+                                    <span class="audit-type">Location: Bangalore · 5 new requests</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">VERIFIED</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon warning">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Blood stock critical</span>
+                                    <span class="audit-time">2 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-hospital"></i> City General</span>
+                                    <span class="audit-type">O-: 2 units, AB-: 1 unit</span>
+                                </div>
+                            </div>
+                            <span class="audit-status urgent">CRITICAL</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Blood request fulfilled</span>
+                                    <span class="audit-time">3 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-tint"></i> Request #R-2012</span>
+                                    <span class="audit-type">Donor: Michael Chen · 450ml</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">FULFILLED</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon warning">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">Security alert: Multiple login attempts</span>
+                                    <span class="audit-time">5 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-user"></i> IP: 192.168.1.45</span>
+                                    <span class="audit-type">3 failed attempts</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">INVESTIGATING</span>
+                        </div>
+
+                        <div class="audit-log-item">
+                            <div class="audit-icon info">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="audit-content">
+                                <div class="audit-header">
+                                    <span class="audit-action">System backup completed</span>
+                                    <span class="audit-time">6 hours ago</span>
+                                </div>
+                                <div class="audit-details">
+                                    <span class="audit-user"><i class="fas fa-server"></i> Automated</span>
+                                    <span class="audit-type">Size: 2.4GB · Status: Success</span>
+                                </div>
+                            </div>
+                            <span class="audit-status">SUCCESS</span>
+                        </div>
+                    </div>
+
+                    <div class="pagination">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">5</button>
+                        <button class="page-btn">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other pages (minimal for navigation) -->
+            <div id="patients" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>Manage Patients</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Total Patients</h3>
+                            <div class="number">892</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3>Active Requests</h3>
+                            <div class="number">67</div>
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="requests" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>Blood Requests</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="statistics" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>System Statistics</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="notifications" class="page">
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h1>Send Notifications</h1>
+                    </div>
+                    <div class="admin-profile">
+                        <div class="notification-badge">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-text">
+                                <h4>Admin</h4>
+                                <p>System Administrator</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=8b0000&color=fff&size=45" alt="Admin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
