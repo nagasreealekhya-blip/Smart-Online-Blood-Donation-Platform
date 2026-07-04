@@ -1,128 +1,220 @@
-﻿╔══════════════════════════════════════════════════════════════╗
-║          LifeFlow - Smart Blood Donation Platform            ║
-║          Frontend: HTML + CSS + JavaScript                   ║
-║          Backend:  PHP 8.0+                                  ║
-║          Database: MySQL 5.7+ / MariaDB 10.4+               ║
-╚══════════════════════════════════════════════════════════════╝
+﻿# 🩸 LifeFlow - Smart Online Blood Donation Platform
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- QUICK SETUP (XAMPP / WAMP / MAMP)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+A **PHP & MySQL-based Smart Online Blood Donation Platform** that connects **Donors, Patients, Hospitals, and Administrators** through a secure and user-friendly web application.
 
-1. COPY FILES
-   Place the entire `lifeflow-php/` folder inside:
-   - XAMPP: C:\xampp\htdocs\lifeflow\
-   - WAMP:  C:\wamp64\www\lifeflow\
-   - MAMP:  /Applications/MAMP/htdocs/lifeflow/
-   - Linux: /var/www/html/lifeflow/
+---
 
-2. CREATE DATABASE
-   Open phpMyAdmin → New Database → name it "lifeflow"
-   OR run from terminal:
-     mysql -u root -p -e "CREATE DATABASE lifeflow CHARACTER SET utf8mb4;"
+## 📌 Project Overview
 
-3. IMPORT SCHEMA
-   In phpMyAdmin: select "lifeflow" → Import → Choose database.sql
-   OR from terminal:
-     mysql -u root -p lifeflow < database.sql
+LifeFlow is a web-based blood donation management system developed using **PHP**, **MySQL**, **HTML**, **CSS**, and **JavaScript**. The platform simplifies blood donation by allowing donors to register, hospitals to manage blood inventory, patients to request blood, and administrators to monitor the entire system.
 
-4. CONFIGURE DB CONNECTION
-   Edit db_connect.php and set your credentials:
-     $db_host = '127.0.0.1';    (usually 127.0.0.1 or localhost)
-     $db_name = 'lifeflow';
-     $db_user = 'root';         (your MySQL username)
-     $db_pass = '';             (your MySQL password)
-     $db_port = 3306;           (default MySQL port)
+---
 
-   TIP: You can also set these as environment variables:
-     DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT
+## ✨ Features
 
-5. START SERVERS
-   - Start Apache and MySQL in XAMPP Control Panel
-   - Open: http://localhost/lifeflow/php/index.php
+- 👤 Multi-role Authentication (Admin, Donor, Patient, Hospital)
+- 🔐 Secure Login & Registration
+- 🩸 Blood Request Management
+- 🏥 Hospital Blood Inventory Management
+- 👥 Donor Search by Blood Group
+- 📊 Admin Dashboard
+- ✏️ Profile Management
+- 📱 Responsive User Interface
+- 📧 Contact Form
+- 🔒 Password Hashing (bcrypt)
+- ⚡ Session-based Authentication
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- DEMO ACCOUNTS (from database.sql seed data)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 
-  Role       Email                    Password
-  ────────   ─────────────────────    ──────────
-  Admin      admin@lifeflow.com       password
-  Donor      donor@lifeflow.com       password
-  Patient    patient@lifeflow.com     password
-  Hospital   hospital@lifeflow.com    password
+## 🛠️ Technologies Used
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- FILE STRUCTURE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+| Technology | Purpose |
+|------------|---------|
+| HTML5 | Structure |
+| CSS3 | Styling |
+| JavaScript | Client-side Interactivity |
+| PHP 8+ | Backend Development |
+| MySQL | Database |
+| XAMPP | Local Development Environment |
 
-lifeflow-php/
-├── database.sql              ← Import this first!
-├── db_connect.php            ← Database config (edit this)
-├── README.txt                ← This file
+---
+
+## 📂 Project Structure
+
+```text
+LifeFlow/
 │
 ├── css/
-│   └── style.css             ← All styles (crimson theme)
+│   └── style.css
 │
 ├── js/
-│   └── app.js                ← All JavaScript interactions
+│   └── app.js
 │
-└── php/
-    ├── index.php             ← Home / Landing page
-    ├── login.php             ← Login page
-    ├── register.php          ← Registration (4 roles)
-    ├── logout.php            ← Logout handler
-    ├── dashboard.php         ← Role-based redirect
-    ├── donor_dashboard.php   ← Donor dashboard
-    ├── patient_dashboard.php ← Patient dashboard
-    ├── hospital_dashboard.php← Hospital dashboard + inventory
-    ├── admin_dashboard.php   ← Admin control panel
-    ├── blood_request.php     ← Post a blood request
-    ├── view_requests.php     ← Browse all requests (public)
-    ├── about.php             ← About page
-    ├── contact.php           ← Contact form
-    └── edit_profile.php      ← Edit user profile
+├── php/
+│   ├── index.php
+│   ├── login.php
+│   ├── register.php
+│   ├── logout.php
+│   ├── dashboard.php
+│   ├── donor_dashboard.php
+│   ├── patient_dashboard.php
+│   ├── hospital_dashboard.php
+│   ├── admin_dashboard.php
+│   ├── blood_request.php
+│   ├── view_requests.php
+│   ├── about.php
+│   ├── contact.php
+│   └── edit_profile.php
+│
+├── Screenshots/
+│
+├── database.sql
+├── db_connect.php
+└── README.md
+```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- FEATURES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 
-✅ Multi-role authentication (Donor / Patient / Hospital / Admin)
-✅ PHP sessions for login state
-✅ bcrypt password hashing
-✅ Blood request CRUD (create, filter, status updates)
-✅ Blood inventory management (per hospital, all 8 blood groups)
-✅ Donor availability toggle
-✅ Donor search (filter by blood group + city)
-✅ Admin user management (suspend / reactivate)
-✅ Contact form with admin review
-✅ Newsletter subscription
-✅ Responsive design (mobile-friendly)
-✅ Crimson/red theme matching the LifeFlow brand
-✅ Auto-dismiss flash alerts
-✅ FAQ accordion
-✅ Animated stat counters
+## ⚙️ Installation Guide
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- REQUIREMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+### 1️⃣ Clone the Repository
 
-• PHP 8.0 or higher (uses PHP 8.x features)
-• MySQL 5.7+ or MariaDB 10.4+
-• Apache or Nginx with mod_rewrite (for XAMPP/WAMP, Apache works out of the box)
-• Internet connection (CSS loads Google Fonts + Font Awesome from CDN)
+```bash
+git clone https://github.com/nagasreealekhya-blip/Smart-Online-Blood-Donation-Platform.git
+```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- PRODUCTION DEPLOYMENT NOTES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+### 2️⃣ Move the Project
 
-• Set DB credentials via environment variables (not hardcoded)
-• Enable HTTPS (SSL certificate required for production)
-• Set session cookie: secure = true in php.ini for HTTPS
-• Set PHP error display off: display_errors = 0
-• Consider adding CSRF tokens to all POST forms
-• Rate limit login attempts with a middleware or .htaccess
+Copy the project folder to:
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- © 2024 LifeFlow. Every Drop Counts.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+C:\xampp\htdocs\
+```
+
+### 3️⃣ Start XAMPP
+
+Start:
+
+- Apache
+- MySQL
+
+### 4️⃣ Create Database
+
+Create a database named:
+
+```
+lifeflow
+```
+
+### 5️⃣ Import Database
+
+Import:
+
+```
+database.sql
+```
+
+using phpMyAdmin.
+
+### 6️⃣ Configure Database
+
+Edit:
+
+```
+db_connect.php
+```
+
+Set your database credentials.
+
+### 7️⃣ Run the Project
+
+Open:
+
+```
+http://localhost/lifeflow/php/index.php
+```
+
+---
+
+## 👥 Demo Accounts
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@lifeflow.com | password |
+| Donor | donor@lifeflow.com | password |
+| Patient | patient@lifeflow.com | password |
+| Hospital | hospital@lifeflow.com | password |
+
+---
+
+# 📸 Project Screenshots
+
+## 🏠 Home Page
+
+![Home](Screenshots/Index.jpeg)
+
+---
+
+## 🔐 Login Page
+
+![Login](Screenshots/Login.jpeg)
+
+---
+
+## 📝 Registration Page
+
+![Register](Screenshots/Register.jpeg)
+
+---
+
+## ℹ️ About Page
+
+![About](Screenshots/About.jpeg)
+
+---
+
+## 📞 Contact Page
+
+![Contact](Screenshots/Contact.jpeg)
+
+---
+
+## 🩸 Blood Request Page
+
+![Blood Request](Screenshots/Blood%20Request.jpeg)
+
+---
+
+## 📋 View Requests Page
+
+![View Requests](Screenshots/View%20Request.jpeg)
+
+---
+
+## 🔮 Future Enhancements
+
+- Email Notifications
+- SMS Alerts
+- Blood Donation Appointment Booking
+- Google Maps Integration
+- PDF Report Generation
+- Dark Mode
+- REST API Support
+
+---
+
+## 👩‍💻 Author
+
+**Naga Sree Alekhya**
+
+GitHub: https://github.com/nagasreealekhya-blip
+
+---
+
+## 📄 License
+
+This project is developed for educational and learning purposes.
+
+---
+
+# ❤️ Every Drop Counts. Save Lives.
