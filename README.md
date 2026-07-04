@@ -153,43 +153,29 @@ http://localhost/lifeflow/php/index.php
 
 ![Home](Screenshots/Index.jpeg)
 
----
-
 ## 🔐 Login Page
 
 ![Login](Screenshots/Login.jpeg)
-
----
 
 ## 📝 Registration Page
 
 ![Register](Screenshots/Register.jpeg)
 
----
-
 ## ℹ️ About Page
 
 ![About](Screenshots/About.jpeg)
-
----
 
 ## 📞 Contact Page
 
 ![Contact](Screenshots/Contact.jpeg)
 
----
-
 ## 🩸 Blood Request Page
 
 ![Blood Request](Screenshots/Blood%20Request.jpeg)
 
----
-
 ## 📋 View Requests Page
 
 ![View Requests](Screenshots/View%20Request.jpeg)
-
----
 
 ## 🔮 Future Enhancements
 
